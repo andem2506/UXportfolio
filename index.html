@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[Your Name] | UX Designer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        cursor: none; /* Hide default cursor */
+      }
+      #custom-cursor {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: rgba(100, 100, 255, 0.7);
+        box-shadow: 0 0 5px rgba(100, 100, 255, 0.3);
+        z-index: 1000;
+        transition: transform 0.1s ease, background-color 0.1s ease;
+      }
+      #custom-cursor.active {
+        transform: translate(-50%, -50%) scale(1.3);
+        background-color: rgba(150, 150, 255, 0.8);
+        box-shadow: 0 0 8px rgba(150, 150, 255, 0.5);
+      }
+      #cursor-follower {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: rgba(150, 150, 150, 0.5);
+        z-index: 999;
+        transition: transform 0.2s ease;
+      }
+      #background-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 scroll-smooth cursor-none">
+    <div id="custom-cursor"></div>
+    <div id="cursor-follower"></div>
+    <canvas id="background-canvas"></canvas>
+    <main class="px-6 py-12 md:px-20 lg:px-40 space-y-24">
+      <section class="grid md:grid-cols-2 gap-10 items-center min-h-screen" data-aos="fade-up">
+        <div class="space-y-6">
+          <h1 class="text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
+            Hi, I'm Sai!
+          </h1>
+          <p class="text-xl text-gray-700">
+            UX Designer crafting elegant, intuitive digital experiences with a human-centered approach.
+          </p>
+          <a href="#work" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-medium hover:scale-105 transition transform">
+            View My Work →
+          </a>
+        </div>
+        <div data-aos="zoom-in">
+          <img
+            src="Andem-profile-pic-black.gif"
+            alt="Portrait"
+            class=""
+          />
+        </div>
+      </section>
+
+      <section id="work" class="space-y-10" data-aos="fade-up">
+        <h2 class="text-4xl font-semibold text-center">Featured Case Studies</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition" data-aos="fade-up">
+            <img src="https://via.placeholder.com/400x300?text=Project+1" alt="Project 1" class="w-full" />
+            <div class="p-6 space-y-3">
+              <h3 class="text-2xl font-semibold">Fintech Dashboard Revamp</h3>
+              <p class="text-gray-600">Improved user flow and reduced onboarding time by 30%.</p>
+              <a href="#" class="text-blue-600 hover:underline">Read More</a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://via.placeholder.com/400x300?text=Project+2" alt="Project 2" class="w-full" />
+            <div class="p-6 space-y-3">
+              <h3 class="text-2xl font-semibold">Healthcare App UX Audit</h3>
+              <p class="text-gray-600">Simplified interactions for elderly users, increasing engagement.</p>
+              <a href="#" class="text-blue-600 hover:underline">Read More</a>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://via.placeholder.com/400x300?text=Project+3" alt="Project 3" class="w-full" />
+            <div class="p-6 space-y-3">
+              <h3 class="text-2xl font-semibold">E-commerce Mobile Redesign</h3>
+              <p class="text-gray-600">Enhanced mobile conversion rate with intuitive checkout UX.</p>
+              <a href="#" class="text-blue-600 hover:underline">Read More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-6 max-w-3xl mx-auto text-center" data-aos="fade-up">
+        <h2 class="text-4xl font-semibold">About Me</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          I’m a UX designer with [X] years of experience designing seamless digital products in fintech, healthtech, and e-commerce. I combine research, interaction design, and prototyping to solve real-world user problems — elegantly and efficiently.
+        </p>
+      </section>
+
+      <section class="bg-gradient-to-br from-indigo-100 via-blue-50 to-white p-12 rounded-3xl shadow-inner text-center space-y-6" data-aos="fade-up">
+        <h2 class="text-3xl font-semibold">Let’s Collaborate</h2>
+        <p class="text-gray-700 max-w-xl mx-auto">
+          Looking for a thoughtful, strategic UX designer? I’m open to freelance, full-time, or collaborative projects.
+        </p>
+        <a href="mailto:your@email.com" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:scale-105 transition">
+          Get in Touch
+        </a>
+      </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true });
+
+            // --- Custom Cursor ---
+      const customCursor = document.getElementById("custom-cursor");
+      const cursorFollower = document.getElementById("cursor-follower");
+
+      let mouseX = 0;
+      let mouseY = 0;
+      let cursorActive = false;
+
+      document.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+
+          gsap.to(customCursor, {
+              x: mouseX,
+              y: mouseY,
+              duration: 0.08,
+              ease: "power1.out"
+          });
+
+          gsap.to(cursorFollower, {
+              x: mouseX,
+              y: mouseY,
+              duration: 0.2,
+              ease: "power2.out"
+          });
+      });
+
+      document.addEventListener("mouseenter", () => {
+          cursorActive = true;
+          customCursor.classList.add("active");
+      });
+
+      document.addEventListener("mouseleave", () => {
+          cursorActive = false;
+          customCursor.classList.remove("active");
+      });
+
+      document.addEventListener("click", () => {
+          gsap.to(customCursor, {
+              scale: 1.4,
+              duration: 0.15,
+              onComplete: () => {
+                  gsap.to(customCursor, { scale: 1, duration: 0.08 });
+              },
+          });
+      });
+
+
+
+        // --- Background Animation (Canvas) ---
+        const canvas = document.getElementById('background-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const particleCount = 40;
+
+        const colors = [
+            'rgba(220, 220, 220, 0.3)',
+            'rgba(211, 211, 211, 0.3)',
+            'rgba(192, 192, 192, 0.3)',
+            'rgba(176, 196, 222, 0.3)',
+            'rgba(173, 216, 230, 0.3)'
+        ];
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 3 + 1;
+                this.color = color;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = (Math.random() - 0.5) * 0.8;
+                this.opacity = 0;
+                this.fadeSpeed = 0.015;
+                this.lifespan = Math.random() * 150 + 300;
+                this.age = 0;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.age++;
+
+                if (this.opacity < 1) {
+                    this.opacity += this.fadeSpeed;
+                }
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = Math.max(0, 1 - this.age / this.lifespan);
+                ctx.fill();
+                ctx.closePath();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height, colors[i % colors.length]));
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((particle, index) => {
+                particle.update();
+                particle.draw();
+                if (particle.age >= particle.lifespan) {
+                    particles.splice(index, 1);
+                    particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height, colors[Math.floor(Math.random() * colors.length)]));
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+  </body>
+</html>
