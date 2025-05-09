@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> {/* Consider adding class="dark" here or managing it with JS for dark mode toggle */}
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,17 +8,20 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
       body {
-        /* Default body font, will be overridden by Tailwind's font-sans if config is used */
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', sans-serif; /* Default body font */
         margin: 0;
       }
-      /* Basic setup for custom font families via classes (if not using full Tailwind config) */
-      .font-sans { font-family: 'Inter', sans-serif; }
-      .font-heading { font-family: 'Outfit', sans-serif; }
+      /* Define font-heading for easier use if not using full Tailwind config */
+      .font-heading {
+        font-family: 'Syne', sans-serif;
+      }
+      .font-sans { /* Ensure Inter is primary for body text */
+        font-family: 'Inter', sans-serif;
+      }
 
       #custom-cursor {
         pointer-events: none;
@@ -31,7 +34,7 @@
         border-radius: 50%;
         background-color: rgba(100, 100, 255, 0.7);
         box-shadow: 0 0 5px rgba(100, 100, 255, 0.3);
-        z-index: 10000; /* Ensure cursor is on top */
+        z-index: 10000;
         transition: transform 0.1s ease, background-color 0.1s ease;
       }
       #custom-cursor.active {
@@ -49,7 +52,7 @@
         height: 6px;
         border-radius: 50%;
         background-color: rgba(150, 150, 150, 0.5);
-        z-index: 9999; /* Ensure cursor is on top */
+        z-index: 9999;
         transition: transform 0.2s ease;
       }
       #background-canvas {
@@ -65,18 +68,8 @@
         overflow-x: hidden;
       }
     </style>
-    <script>
-      // If you set up Tailwind CSS with a config file including darkMode: 'class'
-      // you might add logic here to toggle the 'dark' class on the <html> element.
-      // Example:
-      // if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      //   document.documentElement.classList.add('dark')
-      // } else {
-      //   document.documentElement.classList.remove('dark')
-      // }
-    </script>
   </head>
-  <body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-slate-50 scroll-smooth font-sans">
+  <body class="bg-white text-gray-900 scroll-smooth font-sans"> {/* Main body uses Inter */}
     <div id="custom-cursor"></div>
     <div id="cursor-follower"></div>
     <canvas id="background-canvas"></canvas>
@@ -84,13 +77,15 @@
     <main class="px-6 py-12 md:px-20 lg:px-40 space-y-24 md:space-y-32">
       <section class="grid md:grid-cols-2 gap-10 items-center min-h-screen" data-aos="fade-up">
         <div class="space-y-6">
-          <h1 class="text-5xl md:text-6xl font-bold font-heading leading-tight bg-gradient-to-r from-blue-500 to-indigo-500 dark:from-blue-400 dark:to-indigo-400 text-transparent bg-clip-text">
+          {/* Hero heading uses Syne, boldest weight */}
+          <h1 class="text-5xl md:text-6xl font-heading font-extrabold leading-tight bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
             Hi, I'm Sai!
           </h1>
-          <p class="text-xl text-gray-700 dark:text-gray-300">
+          <p class="text-xl text-gray-700">
             UX Designer crafting elegant, intuitive digital experiences with a human-centered approach.
           </p>
-          <a href="#work" class="font-heading inline-block bg-indigo-600 text-white px-8 py-3.5 rounded-full text-lg font-medium hover:bg-indigo-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+          {/* Button text can also use heading font for consistency if desired */}
+          <a href="#work" class="font-heading inline-block bg-blue-600 text-white px-8 py-3.5 rounded-full text-lg font-medium hover:bg-blue-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
             View My Work →
           </a>
         </div>
@@ -104,15 +99,16 @@
       </section>
 
       <section id="work" class="space-y-12" data-aos="fade-up">
-        <h2 class="text-4xl md:text-5xl font-bold font-heading text-center text-slate-800 dark:text-white">Featured Case Studies</h2>
+        {/* Section heading uses Syne */}
+        <h2 class="text-4xl md:text-5xl font-heading font-bold text-center text-gray-800">Featured Case Studies</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
 
-          {/* */}
-          <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-xl
+          {/* Card 1: Modernized for Light Theme */}
+          <div class="group bg-white rounded-2xl shadow-xl
                       transform transition-all duration-300 ease-in-out
                       hover:shadow-indigo-500/30 hover:shadow-2xl 
                       hover:-translate-y-3 hover:scale-[1.03]
-                      border border-slate-100 dark:border-slate-700 hover:border-indigo-400 dark:hover:border-indigo-500
+                      border border-gray-200 hover:border-indigo-500
                       overflow-hidden flex flex-col" data-aos="fade-up">
             <div class="overflow-hidden">
               <img src="https://via.placeholder.com/400x300?text=Project+Alpha" alt="Project Alpha Thumbnail"
@@ -121,18 +117,19 @@
                           group-hover:scale-110" />
             </div>
             <div class="p-6 space-y-4 flex-grow flex flex-col">
-              <h3 class="text-2xl font-semibold font-heading text-slate-800 dark:text-white">Fintech Dashboard Revamp</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm flex-grow">Improved user flow and reduced onboarding time by 30%, enhancing overall user satisfaction and efficiency.</p>
-              <a href="#" class="inline-block mt-auto text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium font-heading group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+              {/* Card title uses Syne */}
+              <h3 class="text-2xl font-heading font-bold text-gray-800">Fintech Dashboard Revamp</h3>
+              <p class="text-gray-600 text-sm flex-grow">Improved user flow and reduced onboarding time by 30%, enhancing overall user satisfaction and efficiency.</p>
+              <a href="#" class="font-heading inline-block mt-auto text-indigo-600 hover:text-indigo-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
             </div>
           </div>
 
-          {/* */}
-          <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-xl
+          {/* Card 2: Modernized for Light Theme */}
+          <div class="group bg-white rounded-2xl shadow-xl
                       transform transition-all duration-300 ease-in-out
                       hover:shadow-purple-500/30 hover:shadow-2xl
                       hover:-translate-y-3 hover:scale-[1.03]
-                      border border-slate-100 dark:border-slate-700 hover:border-purple-400 dark:hover:border-purple-500
+                      border border-gray-200 hover:border-purple-500
                       overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
             <div class="overflow-hidden">
               <img src="https://via.placeholder.com/400x300?text=Project+Beta" alt="Project Beta Thumbnail"
@@ -141,18 +138,18 @@
                           group-hover:scale-110" />
             </div>
             <div class="p-6 space-y-4 flex-grow flex flex-col">
-              <h3 class="text-2xl font-semibold font-heading text-slate-800 dark:text-white">Healthcare App UX Audit</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm flex-grow">Simplified interactions for elderly users, leading to a significant increase in daily active users and task completion rates.</p>
-              <a href="#" class="inline-block mt-auto text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 font-medium font-heading group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+              <h3 class="text-2xl font-heading font-bold text-gray-800">Healthcare App UX Audit</h3>
+              <p class="text-gray-600 text-sm flex-grow">Simplified interactions for elderly users, leading to a significant increase in daily active users and task completion rates.</p>
+              <a href="#" class="font-heading inline-block mt-auto text-purple-600 hover:text-purple-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
             </div>
           </div>
 
-          {/* */}
-          <div class="group bg-white dark:bg-slate-800 rounded-2xl shadow-xl
+          {/* Card 3: Modernized for Light Theme */}
+          <div class="group bg-white rounded-2xl shadow-xl
                       transform transition-all duration-300 ease-in-out
                       hover:shadow-teal-500/30 hover:shadow-2xl
                       hover:-translate-y-3 hover:scale-[1.03]
-                      border border-slate-100 dark:border-slate-700 hover:border-teal-400 dark:hover:border-teal-500
+                      border border-gray-200 hover:border-teal-500
                       overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
             <div class="overflow-hidden">
               <img src="https://via.placeholder.com/400x300?text=Project+Gamma" alt="Project Gamma Thumbnail"
@@ -161,9 +158,9 @@
                           group-hover:scale-110" />
             </div>
             <div class="p-6 space-y-4 flex-grow flex flex-col">
-              <h3 class="text-2xl font-semibold font-heading text-slate-800 dark:text-white">E-commerce Mobile Redesign</h3>
-              <p class="text-gray-600 dark:text-gray-400 text-sm flex-grow">Enhanced mobile conversion rate by over 25% with an intuitive checkout process and visually appealing product displays.</p>
-              <a href="#" class="inline-block mt-auto text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium font-heading group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+              <h3 class="text-2xl font-heading font-bold text-gray-800">E-commerce Mobile Redesign</h3>
+              <p class="text-gray-600 text-sm flex-grow">Enhanced mobile conversion rate by over 25% with an intuitive checkout process and visually appealing product displays.</p>
+              <a href="#" class="font-heading inline-block mt-auto text-teal-600 hover:text-teal-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
             </div>
           </div>
 
@@ -171,18 +168,19 @@
       </section>
 
       <section class="space-y-6 max-w-3xl mx-auto text-center" data-aos="fade-up">
-        <h2 class="text-4xl md:text-5xl font-bold font-heading text-slate-800 dark:text-white">About Me</h2>
-        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+        <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-800">About Me</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
           I’m a UX designer with [X] years of experience designing seamless digital products in fintech, healthtech, and e-commerce. I combine research, interaction design, and prototyping to solve real-world user problems — elegantly and efficiently.
         </p>
       </section>
 
-      <section class="bg-gradient-to-br from-indigo-50 via-blue-50 to-slate-50 dark:from-slate-800 dark:via-slate-800/90 dark:to-slate-900 p-10 md:p-16 rounded-3xl shadow-inner text-center space-y-6" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold font-heading text-slate-800 dark:text-white">Let’s Collaborate</h2>
-        <p class="text-gray-700 dark:text-gray-300 max-w-xl mx-auto text-lg">
+      {/* This section had a light gradient background in the original user HTML - restoring that */}
+      <section class="bg-gradient-to-br from-indigo-50 via-blue-50 to-gray-50 p-10 md:p-16 rounded-3xl shadow-inner text-center space-y-6" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-800">Let’s Collaborate</h2>
+        <p class="text-gray-700 max-w-xl mx-auto text-lg">
           Looking for a thoughtful, strategic UX designer? I’m open to freelance, full-time, or collaborative projects.
         </p>
-        <a href="mailto:your@email.com" class="font-heading inline-block bg-indigo-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+        <a href="mailto:your@email.com" class="font-heading inline-block bg-indigo-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
           Get in Touch
         </a>
       </section>
@@ -191,12 +189,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    {/* Consider moving the inline script to an external custom-scripts.js file as discussed previously */}
     <script>
       AOS.init({
         once: true,
-        duration: 700, // Slightly longer duration for a smoother feel
-        offset: 80 // Adjust offset as needed
+        duration: 700,
+        offset: 80
       });
 
       // --- Custom Cursor (assuming GSAP is loaded) ---
@@ -214,7 +211,7 @@
       let mouseX = 0;
       let mouseY = 0;
 
-      if (!isTouchDevice && typeof gsap !== 'undefined') { // Check if GSAP is loaded
+      if (!isTouchDevice && typeof gsap !== 'undefined') {
         document.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
@@ -245,18 +242,16 @@
 
       // --- Background Animation (Canvas) ---
       const canvas = document.getElementById('background-canvas');
-      if (canvas) { // Only run if canvas element exists
+      if (canvas) {
         const ctx = canvas.getContext('2d');
         const gridSize = 30;
-        const linesColorLight = 'rgba(0, 0, 0, 0.08)'; // Lighter for light mode
-        const linesColorDark = 'rgba(255, 255, 255, 0.08)'; // Lighter for dark mode
-        let currentLinesColor = linesColorLight; // Default
+        const linesColor = 'rgba(0, 0, 0, 0.08)'; // Single color for light theme
         const stiffness = 0.08;
         const damping = 0.8;
         let points = [];
         let columns, rows;
 
-        class Point { /* ... (Point class definition remains largely the same) ... */
+        class Point {
             constructor(x, y) {
                 this.x = x; this.y = y; this.baseX = x; this.baseY = y;
                 this.vx = 0; this.vy = 0;
@@ -277,15 +272,8 @@
             }
         }
 
-        function setLinesColor() {
-            if (document.documentElement.classList.contains('dark')) {
-                currentLinesColor = linesColorDark;
-            } else {
-                currentLinesColor = linesColorLight;
-            }
-        }
-
         function createGrid() {
+            if (!canvas) return;
             canvas.width = window.innerWidth; canvas.height = window.innerHeight;
             columns = Math.ceil(canvas.width / gridSize) + 1;
             rows = Math.ceil(canvas.height / gridSize) + 1;
@@ -299,11 +287,11 @@
         }
         function drawGrid() {
             if (!ctx) return;
-            ctx.strokeStyle = currentLinesColor; // Use dynamic color
+            ctx.strokeStyle = linesColor;
             ctx.lineWidth = 0.15;
             for (let i = 0; i < columns - 1; i++) {
                 for (let j = 0; j < rows - 1; j++) {
-                    if (points[i] && points[i][j] && points[i+1] && points[i+1][j] && points[i+1][j+1] && points[i][j+1]) {
+                     if (points[i] && points[i][j] && points[i+1] && points[i+1][j] && points[i+1][j+1] && points[i][j+1]) {
                         const p1 = points[i][j], p2 = points[i+1][j], p3 = points[i+1][j+1], p4 = points[i][j+1];
                         ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
                         ctx.lineTo(p3.x, p3.y); ctx.lineTo(p4.x, p4.y); ctx.closePath(); ctx.stroke();
@@ -311,7 +299,7 @@
                 }
             }
         }
-        function updateGrid() { /* ... (updateGrid definition remains the same) ... */
+        function updateGrid() {
             for (let i = 0; i < columns; i++) {
                 for (let j = 0; j < rows; j++) {
                     if (points[i] && points[i][j]) { points[i][j].update(); }
@@ -327,11 +315,11 @@
         }
         function initCanvasAnimation() {
             if (!canvas) return;
-            setLinesColor(); // Set initial color
             createGrid();
             if (animationFrameId) cancelAnimationFrame(animationFrameId);
             animateCanvas();
         }
+
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initCanvasAnimation);
         } else {
@@ -342,18 +330,7 @@
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => { if (canvas) initCanvasAnimation(); }, 100);
         });
-
-        // Optional: Watch for dark mode changes if you implement a toggle
-        // const observer = new MutationObserver((mutationsList) => {
-        //     for(let mutation of mutationsList) {
-        //         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-        //             setLinesColor(); // Update canvas line color on dark mode toggle
-        //         }
-        //     }
-        // });
-        // observer.observe(document.documentElement, { attributes: true });
-
-      } // End of if(canvas) block
+      }
     </script>
   </body>
 </html>
