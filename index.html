@@ -10,7 +10,9 @@
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        cursor: none; /* Hide default cursor */
+        cursor: none;
+        margin: 0;
+        overflow: hidden;
       }
       #custom-cursor {
         pointer-events: none;
@@ -190,84 +192,124 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let particles = [];
-        const particleCount = 40;
+        const gridSize = 20;
+        const linesColor = '#000000';
+        const stiffness = 0.15;
+        const damping = 0.7;
+        let points = [];
+        let columns = Math.ceil(canvas.width / gridSize) + 1;
+        let rows = Math.ceil(canvas.height / gridSize) + 1;
+        // let mouseX = canvas.width / 1;  Remove let from here
+        // let mouseY = canvas.height / 1; Remove let from here
 
-        const colors = [
-            'rgba(220, 220, 220, 0.3)',
-            'rgba(211, 211, 211, 0.3)',
-            'rgba(192, 192, 192, 0.3)',
-            'rgba(176, 196, 222, 0.3)',
-            'rgba(173, 216, 230, 0.3)'
-        ];
-
-        class Particle {
-            constructor(x, y, color) {
+        class Point {
+            constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.size = Math.random() * 3 + 1;
-                this.color = color;
-                this.speedX = (Math.random() - 0.5) * 0.8;
-                this.speedY = (Math.random() - 0.5) * 0.8;
-                this.opacity = 0;
-                this.fadeSpeed = 0.015;
-                this.lifespan = Math.random() * 150 + 300;
-                this.age = 0;
+                this.baseX = x;
+                this.baseY = y;
+                this.vx = 0;
+                this.vy = 0;
             }
 
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                this.age++;
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (this.opacity < 1) {
-                    this.opacity += this.fadeSpeed;
+                if (distance < 150) {
+                    const force = (150 - distance) / 150;
+                    const angle = Math.atan2(dy, dx);
+
+                    this.vx += Math.cos(angle) * force * 8;
+                    this.vy += Math.sin(angle) * force * 8;
                 }
 
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
+                this.x += this.vx;
+                this.y += this.vy;
+
+                const dxSpring = this.x - this.baseX;
+                const dySpring = this.y - this.baseY;
+                this.vx += -dxSpring * stiffness;
+                this.vy += -dySpring * stiffness;
+
+                this.vx *= damping;
+                this.vy *= damping;
             }
 
             draw() {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = Math.max(0, 1 - this.age / this.lifespan);
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = linesColor;
                 ctx.fill();
                 ctx.closePath();
-                ctx.globalAlpha = 1;
             }
         }
 
-        function initParticles() {
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height, colors[i % colors.length]));
+        function createGrid() {
+            for (let i = 0; i < columns; i++) {
+                points[i] = [];
+                for (let j = 0; j < rows; j++) {
+                    const x = i * gridSize;
+                    const y = j * gridSize;
+                    points[i][j] = new Point(x, y);
+                }
+            }
+        }
+
+        function drawGrid() {
+            ctx.strokeStyle = linesColor;
+            ctx.lineWidth = 0.1;
+
+            for (let i = 0; i < columns - 1; i++) {
+                for (let j = 0; j < rows - 1; j++) {
+                    const p1 = points[i][j];
+                    const p2 = points[i + 1][j];
+                    const p3 = points[i + 1][j + 1];
+                    const p4 = points[i][j + 1];
+
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.lineTo(p3.x, p3.y);
+                    ctx.lineTo(p4.x, p4.y);
+                    ctx.lineTo(p1.x, p1.y);
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+        }
+
+        function updateGrid() {
+            for (let i = 0; i < columns; i++) {
+                for (let j = 0; j < rows; j++) {
+                    points[i][j].update();
+                }
             }
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach((particle, index) => {
-                particle.update();
-                particle.draw();
-                if (particle.age >= particle.lifespan) {
-                    particles.splice(index, 1);
-                    particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height, colors[Math.floor(Math.random() * colors.length)]));
-                }
-            });
-
+            drawGrid();
+            updateGrid();
             requestAnimationFrame(animate);
         }
 
-        initParticles();
+        createGrid();
         animate();
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
 
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            columns = Math.ceil(canvas.width / gridSize) + 1;
+            rows = Math.ceil(canvas.height / gridSize) + 1;
+            points = [];
+            createGrid();
         });
     </script>
   </body>
