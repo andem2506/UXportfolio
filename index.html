@@ -4,174 +4,323 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Andem Sai | UX Designer Portfolio</title>
+    <meta name="description" content="Andem Sai is a UX Designer with a passion for crafting elegant and intuitive digital experiences. View my portfolio of case studies in fintech, healthcare, and e-commerce.">
+    <meta name="keywords" content="UX Designer, UI Design, Portfolio, Case Studies, User Experience, Human-Computer Interaction, Fintech, Healthcare, E-commerce, Design Portfolio">
+    <link rel="canonical" href="https://yourdomain.com/">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Open Sans', sans-serif; /* Updated body font */
-        margin: 0;
-      }
-      .font-heading {
-        font-family: 'Montserrat', sans-serif; /* Updated heading font */
-      }
-      .font-sans { /* Ensure Open Sans is primary for body text */
-        font-family: 'Open Sans', sans-serif;
-      }
-
-      #custom-cursor {
-        pointer-events: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background-color: rgba(100, 100, 255, 0.7);
-        box-shadow: 0 0 5px rgba(100, 100, 255, 0.3);
-        z-index: 10000;
-        transition: transform 0.1s ease, background-color 0.1s ease;
-      }
-      #custom-cursor.active {
-        transform: translate(-50%, -50%) scale(1.3);
-        background-color: rgba(150, 150, 255, 0.8);
-        box-shadow: 0 0 8px rgba(150, 150, 255, 0.5);
-      }
-      #cursor-follower {
-        pointer-events: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: rgba(150, 150, 150, 0.5);
-        z-index: 9999;
-        transition: transform 0.2s ease;
-      }
-      #background-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-      }
-      body.scroll-smooth {
-        overflow-y: auto;
-        overflow-x: hidden;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body class="bg-white text-gray-900 scroll-smooth font-sans">
+
+  <body class="bg-white text-gray-900 scroll-smooth font-sans h-full">
     <div id="custom-cursor"></div>
     <div id="cursor-follower"></div>
     <canvas id="background-canvas"></canvas>
 
+    <header class="sticky top-0 bg-white/90 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200">
+      <div class="flex justify-between items-center">
+        <a href="#" class="font-heading text-2xl font-bold text-gray-800">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
+        <nav>
+          <ul class="flex space-x-6">
+            <li><a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">About</a></li>
+            <li><a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
     <main class="px-6 py-12 md:px-20 lg:px-40 space-y-24 md:space-y-32">
-      <section class="grid md:grid-cols-2 gap-10 items-center min-h-screen" data-aos="fade-up">
-        <div class="space-y-6">
-        
+
+      <section class="flex flex-col md:flex-row items-center justify-center h-screen px-6 md:px-40 gap-8 lg:gap-16 text-center md:text-left">
+        <!-- Text Content -->
+        <div class="flex-1 text-center md:text-left space-y-6">
           <h1 class="text-5xl md:text-6xl font-heading font-extrabold leading-tight bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
             Hi, I'm Sai!
           </h1>
-          <p class="text-xl text-gray-700">
+          <p class="text-xl text-gray-700 max-w-xl mx-auto md:mx-0">
             UX Designer crafting elegant, intuitive digital experiences with a human-centered approach.
           </p>
-          <a href="#work" class="font-heading inline-block bg-blue-600 text-white px-8 py-3.5 rounded-full text-lg font-medium hover:bg-blue-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            View My Work →
+          <a href="" class="font-heading inline-block bg-blue-600 text-white px-8 py-3.5 rounded-full text-lg font-medium hover:bg-blue-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            scroll to View My Work ↓
           </a>
         </div>
-        <div data-aos="zoom-in" class="flex justify-center md:justify-end">
+      
+        <!-- Image -->
+        <div class="flex-1 flex justify-center md:justify-end" data-aos="zoom-in">
           <img
             src="img/Andem-profile-pic-black.gif"
             alt="Portrait of Andem Sai"
-            class=""
+            class="max-w-xs md:max-w-sm w-full h-auto"
           />
         </div>
       </section>
+
       <section id="work" class="space-y-12" data-aos="fade-up">
         <h2 class="text-4xl md:text-5xl font-heading font-bold text-center text-gray-800">Featured Case Studies</h2>
-        <div class="flex overflow-x-auto space-x-8 md:space-x-10">
-          <div class="group bg-white rounded-2xl shadow-xl
-                      transform transition-all duration-300 ease-in-out
-                      hover:shadow-indigo-500/30 hover:shadow-2xl
-                      hover:-translate-y-3 hover:scale-[1.03]
-                      border border-gray-200 hover:border-indigo-500
-                      overflow-hidden flex flex-col w-80 md:w-96 shrink-0" data-aos="fade-up">
-            <div class="overflow-hidden">
-              <img src="img/22122.jpg" alt="Project Alpha Thumbnail"
-                   class="w-full h-56 object-cover
-                          transform transition-transform duration-500 ease-in-out
-                          group-hover:scale-110" />
+        <div>
+          <section class="case-study bg-white rounded-2xl shadow-xl
+          transform transition-all duration-300 ease-in-out
+          hover:shadow-indigo-500/30 hover:shadow-2xl
+          hover:-translate-y-3 hover:scale-[1.03]
+          border border-gray-200 hover:border-indigo-500
+          " data-aos="fade-up">
+          <div class="case-study-image md:w-1/2 h-32 md:h-auto">
+            <img src="img/PMR_Mob_Prototype.png" alt="Project Screenshot">
+          </div>  
+          <div class="case-study-content">
+              <h3 class="text-2xl font-semibold">Designing a Valet Parking Ecosystem for Real-Time Coordination at Scale</h3>
+              <p class="project-summary">PMR is a 3-sided valet parking system I designed to ease customer stress, 
+                streamline organizer ops, and simplify check-ins for attendants. I led end-to-end UX design from 
+                research to real-time & offline-ready tools. Resulting in a 93% task success rate and a 60% drop in parking complaints.</p>
+
+              <a href="case-study-link.html" class="view-case-study">View case study →</a>
             </div>
-            <div class="p-6 space-y-4 flex-grow flex flex-col">
-              <h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">Fintech Dashboard Revamp</h3>
-              <p class="text-gray-600 text-sm flex-grow line-clamp-3">Improved user flow and reduced onboarding time by 30%, enhancing overall user satisfaction and efficiency.</p>
-              <a href="#" class="font-heading inline-block mt-auto text-indigo-600 hover:text-indigo-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+           
+          </section> 
+          <section class="case-study bg-white rounded-2xl shadow-xl
+          transform transition-all duration-300 ease-in-out
+          hover:shadow-indigo-500/30 hover:shadow-2xl
+          hover:-translate-y-3 hover:scale-[1.03]
+          border border-gray-200 hover:border-indigo-500
+          ">
+          <div class="case-study-image">
+            <img src="img/111111111.png" alt="Project Screenshot">
+          </div>  
+          <div class="case-study-content">
+              <h3 class="text-2xl font-semibold">Elevate your travel experiences by effortlessly booking skilled chauffeurs</h3>
+              <p class="project-summary">Updating the information architecture of the website, 
+                creating a new design guide following the updated branding. Low-fidelity and High 
+                fidelity prototype for Mobile app and the website. Collaboration with the developer 
+                to execute the website and publish online. Conducting Section 508  & WCAG compliance check for the website.</p>
+
+              <a href="case-study-link.html" class="view-case-study">View case study →</a>
             </div>
-          </div>
-      
-          <div class="group bg-white rounded-2xl shadow-xl
-                      transform transition-all duration-300 ease-in-out
-                      hover:shadow-purple-500/30 hover:shadow-2xl
-                      hover:-translate-y-3 hover:scale-[1.03]
-                      border border-gray-200 hover:border-purple-500
-                      overflow-hidden flex flex-col w-80 md:w-96 shrink-0" data-aos="fade-up" data-aos-delay="100">
-            <div class="overflow-hidden">
-              <img src="img/22211222.jpg" alt="Project Beta Thumbnail"
-                   class="w-full h-56 object-cover
-                          transform transition-transform duration-500 ease-in-out
-                          group-hover:scale-110" />
+            
+          </section> 
+          <section class="case-study bg-white rounded-2xl shadow-xl
+          transform transition-all duration-300 ease-in-out
+          hover:shadow-indigo-500/30 hover:shadow-2xl
+          hover:-translate-y-3 hover:scale-[1.03]
+          border border-gray-200 hover:border-indigo-500
+          ">
+          <div class="case-study-image">
+            <img src="img/bambus_multidevice.jpg" alt="Project Screenshot">
+          </div>  
+          <div class="case-study-content">
+              <h3 class="text-2xl font-semibold">Creating delightful 
+                e-commerce experience highlighting the stories of local artisans.</h3>
+              <p class="project-summary">Delivered and validated, user-centered e-commerce 
+                prototype. Promoted ethical shopping through transparency and storytelling,
+                 encouraging mindful consumer behavior.</p>
+
+              <a href="case-study-link.html" class="view-case-study">View case study →</a>
             </div>
-            <div class="p-6 space-y-4 flex-grow flex flex-col">
-              <h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">Healthcare App UX Audit</h3>
-              <p class="text-gray-600 text-sm flex-grow line-clamp-3">Simplified interactions for elderly users, leading to a significant increase in daily active users and task completion rates.</p>
-              <a href="#" class="font-heading inline-block mt-auto text-purple-600 hover:text-purple-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
-            </div>
-          </div>
-      
-          <div class="group bg-white rounded-2xl shadow-xl
-                      transform transition-all duration-300 ease-in-out
-                      hover:shadow-teal-500/30 hover:shadow-2xl
-                      hover:-translate-y-3 hover:scale-[1.03]
-                      border border-gray-200 hover:border-teal-500
-                      overflow-hidden flex flex-col w-80 md:w-96 shrink-0" data-aos="fade-up" data-aos-delay="200">
-            <div class="overflow-hidden">
-              <img src="img/Free_Book_Mockup_1.jpg" alt="Project Gamma Thumbnail"
-                   class="w-full h-56 object-cover
-                          transform transition-transform duration-500 ease-in-out
-                          group-hover:scale-110" />
-            </div>
-            <div class="p-6 space-y-4 flex-grow flex flex-col">
-              <h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">E-commerce Mobile Redesign</h3>
-              <p class="text-gray-600 text-sm flex-grow line-clamp-3">Enhanced mobile conversion rate by over 25% with an intuitive checkout process and visually appealing product displays.</p>
-              <a href="#" class="font-heading inline-block mt-auto text-teal-600 hover:text-teal-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
-            </div>
-          </div>
+            
+          </section>            
+        
+        </div>
+        <div class="text-center">
+            <a href="#moreprojects" class="font-heading inline-block bg-gray-200 text-gray-700 px-6 py-5 rounded-full text-lg font-medium hover:bg-gray-300 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+              See more Projects →
+            </a>
         </div>
       </section>
 
-
-      <section class="space-y-6 max-w-3xl mx-auto text-center" data-aos="fade-up">
+      <section id="about" class="space-y-12 max-w-3xl mx-auto text-center" data-aos="fade-up">
         <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-800">About Me</h2>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          A UX Designer with a Master's in Human-Computer Interaction from DePaul University and 
-          a Bachelor's in Architecture from School of Planning & Architecture, Delhi. Currently contributing 
-          to seamless digital experiences at Eva Eco System, I bring a unique blend of analytical and creative 
-          skills to solve user problems. My experience spans mobile application design, dashboard optimization, 
-          and website enhancements, always with a focus on user-centered solutions.
-        </p>
+        <div class="text-lg text-gray-700 leading-relaxed space-y-6 text-left">
+      
+          <p>
+            I’m a UX Designer with a rich, interdisciplinary background rooted in architecture, design, and technology. My journey began at 
+            <a href="https://spa.ac.in" target="_blank" rel="noopener noreferrer" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              School of Planning and Architecture, Delhi
+            </a>, and continued with a Master’s in 
+            <a href="https://www.depaul.edu/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              Human-Computer Interaction at DePaul University
+            </a>.
+          </p>
+      
+          <p>
+            I started my career in 2015 with 2D and 3D CAD work. Later, I co-founded 
+            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              Elsewhere Lab
+            </a>, a collaborative exploring design, materials, and technology.
+          </p>
+      
+          <p>
+            I launched 
+            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              Studio Antematter
+            </a> in Hyderabad, where we completed $1M+ in architectural projects and expanded into digital design for clients like 
+            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              Pratyu
+            </a>, 
+            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              Krest
+            </a>, and the 
+            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              Government of Telangana
+            </a>.
+          </p>
+      
+          <p>
+            I've </a>earned my Master’s in HCI in 2024. I’ve since worked with 
+            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              RideCar
+            </a> and 
+            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              Eva Ecosystems
+            </a> on app and website design.
+          </p>
+          <p>
+            I’m currently 
+            <a href="#contact" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              seeking full-time opportunities
+            </a> and open to meaningful collaborations.
+          </p>
+      
+          <p>
+            Outside of work, I enjoy dirt biking, painting, gym sessions, and gardening. I also love creative writing and 
+            <em>Urdu shayari</em>. Lately, I've found joy in reading 
+            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+              regional language books
+            </a>—a surprisingly fulfilling habit.
+          </p>
+      
+        </div>
       </section>
+      
 
-      <section class="bg-gradient-to-br from-indigo-50 via-blue-50 to-gray-50 p-10 md:p-16 rounded-3xl shadow-inner text-center space-y-6" data-aos="fade-up">
+
+
+<!-- All projects here -->
+
+<section id="moreprojects" class="space-y-12" data-aos="fade-up">
+  <h2 class="text-4xl md:text-5xl font-heading font-bold text-center text-gray-800">More projects</h2>
+  <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="group bg-white rounded-2xl shadow-xl
+                transform transition-all duration-300 ease-in-out
+                hover:shadow-indigo-500/30 hover:shadow-2xl
+                hover:-translate-y-3 hover:scale-[1.03]
+                border border-gray-200 hover:border-indigo-500
+                overflow-hidden flex flex-col" data-aos="fade-up">
+      <div class="overflow-hidden">
+        <img src="img/22122.jpg" alt="Fintech Dashboard Revamp"
+             class="w-full h-56 object-cover
+                    transform transition-transform duration-500 ease-in-out
+                    group-hover:scale-110" />
+      </div>
+      <div class="p-6 space-y-4 flex-grow flex flex-col">
+        <h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">Fintech Dashboard Revamp</h3>
+        <p class="text-gray-600 text-sm flex-grow line-clamp-3">Improved user flow and reduced onboarding time by 30%, enhancing overall user satisfaction and efficiency.</p>
+        <a href="#" class="font-heading inline-block mt-auto text-indigo-600 hover:text-indigo-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+      </div>
+    </div>
+    <div class="group bg-white rounded-2xl shadow-xl
+                transform transition-all duration-300 ease-in-out
+                hover:shadow-purple-500/30 hover:shadow-2xl
+                hover:-translate-y-3 hover:scale-[1.03]
+                border border-gray-200 hover:border-purple-500
+                overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
+      <div class="overflow-hidden">
+        <img src="img/22211222.jpg" alt="Healthcare App UX Audit"
+             class="w-full h-56 object-cover
+                    transform transition-transform duration-500 ease-in-out
+                    group-hover:scale-110" />
+      </div>
+      <div class="p-6 space-y-4 flex-grow flex flex-col">
+        <h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">Healthcare App UX Audit</h3>
+        <p class="text-gray-600 text-sm flex-grow line-clamp-3">Simplified interactions for elderly users, leading to a significant increase in daily active users and task completion rates.</p>
+        <a href="#" class="font-heading inline-block mt-auto text-purple-600 hover:text-purple-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+      </div>
+    </div>
+    <div class="group bg-white rounded-2xl shadow-xl
+                transform transition-all duration-300 ease-in-out
+                hover:shadow-teal-500/30 hover:shadow-2xl
+                hover:-translate-y-3 hover:scale-[1.03]
+                border border-gray-200 hover:border-teal-500
+                overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
+      <div class="overflow-hidden">
+        <img src="img/Free_Book_Mockup_1.jpg" alt="E-commerce Mobile Redesign"
+             class="w-full h-56 object-cover
+                    transform transition-transform duration-500 ease-in-out
+                    group-hover:scale-110" />
+      </div>
+      <div class="p-6 space-y-4 flex-grow flex flex-col">
+        <h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">E-commerce Mobile Redesign</h3>
+        <p class="text-gray-600 text-sm flex-grow line-clamp-3">Enhanced mobile conversion rate by over 25% with an intuitive checkout process and visually appealing product displays.</p>
+        <a href="#" class="font-heading inline-block mt-auto text-teal-600 hover:text-teal-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+      </div>
+    </div>
+    <div class="group bg-white rounded-2xl shadow-xl
+                transform transition-all duration-300 ease-in-out
+                hover:shadow-teal-500/30 hover:shadow-2xl
+                hover:-translate-y-3 hover:scale-[1.03]
+                border border-gray-200 hover:border-teal-500
+                overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
+      <div class="overflow-hidden">
+        <img src="img/Free_Book_Mockup_1.jpg" alt="E-commerce Mobile Redesign"
+             class="w-full h-56 object-cover
+                    transform transition-transform duration-500 ease-in-out
+                    group-hover:scale-110" />
+      </div>
+      <div class="p-6 space-y-4 flex-grow flex flex-col">
+        <h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">E-commerce Mobile Redesign</h3>
+        <p class="text-gray-600 text-sm flex-grow line-clamp-3">Enhanced mobile conversion rate by over 25% with an intuitive checkout process and visually appealing product displays.</p>
+        <a href="#" class="font-heading inline-block mt-auto text-teal-600 hover:text-teal-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+      </div>
+    </div>
+    <div class="group bg-white rounded-2xl shadow-xl
+      transform transition-all duration-300 ease-in-out
+      hover:shadow-teal-500/30 hover:shadow-2xl
+      hover:-translate-y-3 hover:scale-[1.03]
+      border border-gray-200 hover:border-teal-500
+      overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
+    <div class="overflow-hidden">
+        <img src="img/Free_Book_Mockup_1.jpg" alt="E-commerce Mobile Redesign"
+            class="w-full h-56 object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-110" /></div>
+    <div class="p-6 space-y-4 flex-grow flex flex-col">
+        <h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">E-commerce Mobile Redesign</h3>
+        <p class="text-gray-600 text-sm flex-grow line-clamp-3">Enhanced mobile conversion rate by over 25% with an intuitive checkout process and visually appealing product displays.</p>
+        <a href="#" class="font-heading inline-block mt-auto text-teal-600 hover:text-teal-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+    </div>
+</div><div class="group bg-white rounded-2xl shadow-xl
+transform transition-all duration-300 ease-in-out
+hover:shadow-teal-500/30 hover:shadow-2xl
+hover:-translate-y-3 hover:scale-[1.03]
+border border-gray-200 hover:border-teal-500
+overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="200">
+<div class="overflow-hidden">
+<img src="img/Free_Book_Mockup_1.jpg" alt="E-commerce Mobile Redesign"
+class="w-full h-56 object-cover
+    transform transition-transform duration-500 ease-in-out
+    group-hover:scale-110" />
+</div>
+<div class="p-6 space-y-4 flex-grow flex flex-col">
+<h3 class="text-2xl font-heading font-bold text-gray-800 line-clamp-2">E-commerce Mobile Redesign</h3>
+<p class="text-gray-600 text-sm flex-grow line-clamp-3">Enhanced mobile conversion rate by over 25% with an intuitive checkout process and visually appealing product displays.</p>
+<a href="#" class="font-heading inline-block mt-auto text-teal-600 hover:text-teal-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+</div>
+</div>
+  </div>
+  <div class="text-center">
+      <a href="#projects" class="font-heading inline-block bg-gray-200 text-gray-700 px-6 py-2.5 rounded-full text-lg font-medium hover:bg-gray-300 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+        See All Projects →
+      </a>
+  </div>
+</section>
+
+
+
+      <section id="contact" class="bg-gradient-to-br from-indigo-50 via-blue-50 to-gray-50 p-10 md:p-16 rounded-3xl shadow-inner text-center space-y-6" data-aos="fade-up">
         <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-800">Let’s Collaborate</h2>
         <p class="text-gray-700 max-w-xl mx-auto text-lg">
-          Looking for a thoughtful, strategic UX designer? I’m open to freelance, full-time, or collaborative projects.
+          Looking for a thoughtful, strategic UX designer? I’m open to full-time, or collaborative projects.
         </p>
         <a href="mailto:your@email.com" class="font-heading inline-block bg-indigo-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
           Get in Touch
@@ -179,151 +328,21 @@
       </section>
     </main>
 
+    <footer class="bg-gray-900 text-white py-8 md:py-12">
+      <div class="container mx-auto px-6 md:px-20 lg:px-40 text-center">
+        <p class="text-md text-gray-400">
+          &copy; <?php echo date("Y"); ?> Andem Sai. All rights reserved.</a>
+        </p>
+        <div class="mt-4 flex justify-center space-x-6">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors duration-200">LinkedIn</a>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 transition-colors duration-200">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        once: true,
-        duration: 700,
-        offset: 80
-      });
-
-      // --- Custom Cursor (assuming GSAP is loaded) ---
-      const customCursor = document.getElementById("custom-cursor");
-      const cursorFollower = document.getElementById("cursor-follower");
-      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-      if (!isTouchDevice) {
-          document.body.style.cursor = 'none';
-      } else {
-        if(customCursor) customCursor.style.display = 'none';
-        if(cursorFollower) cursorFollower.style.display = 'none';
-      }
-
-      let mouseX = 0;
-      let mouseY = 0;
-
-      if (!isTouchDevice && typeof gsap !== 'undefined') {
-        document.addEventListener("mousemove", (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            gsap.to(customCursor, { x: mouseX, y: mouseY, duration: 0.08, ease: "power1.out" });
-            gsap.to(cursorFollower, { x: mouseX, y: mouseY, duration: 0.3, ease: "power2.out" });
-        });
-        document.addEventListener("mouseenter", () => { if(customCursor) customCursor.classList.add("active"); });
-        document.addEventListener("mouseleave", () => { if(customCursor) customCursor.classList.remove("active"); });
-        document.addEventListener("click", () => {
-            if (customCursor) {
-                gsap.fromTo(customCursor, { scale: 1.4 }, { scale: 1, duration: 0.2, ease: "elastic.out(1, 0.3)" });
-            }
-        });
-        const hoverableElements = document.querySelectorAll('a, button, [class*="hover:"], input, textarea, .group');
-        hoverableElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                if (customCursor) {
-                    gsap.to(customCursor, { scale: 1.5, backgroundColor: 'rgba(150, 150, 255, 0.9)', duration: 0.2 });
-                }
-            });
-            el.addEventListener('mouseleave', () => {
-                 if (customCursor) {
-                    gsap.to(customCursor, { scale: 1, backgroundColor: 'rgba(100, 100, 255, 0.7)', duration: 0.2 });
-                }
-            });
-        });
-      }
-
-      // --- Background Animation (Canvas) ---
-      const canvas = document.getElementById('background-canvas');
-      if (canvas) {
-        const ctx = canvas.getContext('2d');
-        const gridSize = 30;
-        const linesColor = 'rgba(0, 0, 0, 0.08)'; // Single color for light theme
-        const stiffness = 0.08;
-        const damping = 0.8;
-        let points = [];
-        let columns, rows;
-
-        class Point {
-            constructor(x, y) {
-                this.x = x; this.y = y; this.baseX = x; this.baseY = y;
-                this.vx = 0; this.vy = 0;
-                this.interactionRadius = 180; this.forceFactor = 8;
-            }
-            update() {
-                const dx = this.x - mouseX; const dy = this.y - mouseY;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < this.interactionRadius && !isTouchDevice) {
-                    const force = (this.interactionRadius - distance) / this.interactionRadius;
-                    const angle = Math.atan2(dy, dx);
-                    this.vx += Math.cos(angle) * force * this.forceFactor;
-                    this.vy += Math.sin(angle) * force * this.forceFactor;
-                }
-                const dxSpring = this.x - this.baseX; const dySpring = this.y - this.baseY;
-                this.vx += -dxSpring * stiffness; this.vy += -dySpring * stiffness;
-                this.x += this.vx; this.y += this.vy; this.vx *= damping; this.vy *= damping;
-            }
-        }
-
-        function createGrid() {
-            if (!canvas) return;
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            columns = Math.ceil(canvas.width / gridSize) + 1;
-            rows = Math.ceil(canvas.height / gridSize) + 1;
-            points = [];
-            for (let i = 0; i < columns; i++) {
-                points[i] = [];
-                for (let j = 0; j < rows; j++) {
-                    points[i][j] = new Point(i * gridSize, j * gridSize);
-                }
-            }
-        }
-        function drawGrid() {
-            if (!ctx) return;
-            ctx.strokeStyle = linesColor;
-            ctx.lineWidth = 0.15;
-            for (let i = 0; i < columns - 1; i++) {
-                for (let j = 0; j < rows - 1; j++) {
-                     if (points[i] && points[i][j] && points[i+1] && points[i+1][j] && points[i+1][j+1] && points[i][j+1]) {
-                        const p1 = points[i][j], p2 = points[i+1][j], p3 = points[i+1][j+1], p4 = points[i][j+1];
-                        ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
-                        ctx.lineTo(p3.x, p3.y); ctx.lineTo(p4.x, p4.y); ctx.closePath(); ctx.stroke();
-                    }
-                }
-            }
-        }
-        function updateGrid() {
-            for (let i = 0; i < columns; i++) {
-                for (let j = 0; j < rows; j++) {
-                    if (points[i] && points[i][j]) { points[i][j].update(); }
-                }
-            }
-        }
-        let animationFrameId = null;
-        function animateCanvas() {
-            if (!ctx || !canvas) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            updateGrid(); drawGrid();
-            animationFrameId = requestAnimationFrame(animateCanvas);
-        }
-        function initCanvasAnimation() {
-            if (!canvas) return;
-            createGrid();
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
-            animateCanvas();
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initCanvasAnimation);
-        } else {
-            initCanvasAnimation();
-        }
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => { if (canvas) initCanvasAnimation(); }, 100);
-        });
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
