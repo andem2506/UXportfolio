@@ -1,0 +1,279 @@
+body {
+    font-family: 'Inter', sans-serif; /* Updated to Inter */
+    margin: 0;
+  }
+  .font-heading {
+    font-family: 'Montserrat', sans-serif;
+  }
+  .font-sans {
+    font-family: 'Open Sans', sans-serif; /* Keeping Open Sans for secondary text if needed */
+  }
+  #custom-cursor {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(100, 100, 255, 0.7);
+    box-shadow: 0 0 5px rgba(100, 100, 255, 0.3);
+    z-index: 10000;
+    transition: transform 0.1s ease, background-color 0.1s ease;
+  }
+  #custom-cursor.active {
+    transform: translate(-50%, -50%) scale(1.3);
+    background-color: rgba(150, 150, 255, 0.8);
+    box-shadow: 0 0 8px rgba(150, 150, 255, 0.5);
+  }
+  #cursor-follower {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(150, 150, 150, 0.5);
+    z-index: 9999;
+    transition: transform 0.2s ease;
+  }
+  #background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  body.scroll-smooth {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .allprojectsbdy {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  #project-list-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 6rem;
+    padding-top: 8rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: visible;
+  }
+  #project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+  }
+  #project-list li {
+    font-size: 1.85rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  #project-list li:hover {
+    color: #6366f1;
+    transform: translateX(10px);
+  }
+  #project-list li.active {
+    color: #6366f1;
+    background-color: rgba(99, 102, 241, 0.1);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    transform: translateX(4px) scale(1.04);
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  #project-display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-right: 6rem;
+    padding-top: 8rem;
+    overflow: visible;
+    height: auto;
+    min-height: 100vh;
+  }
+  .project-display-window {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    height: 450px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+    margin-bottom: 4rem;
+  }
+  .project-display-window.active {
+    display: flex;
+    opacity: 1;
+  }
+  .project-display-window img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
+  }
+  .project-display-content {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7fafc;
+    border-radius: 0 0 1rem 1rem;
+  }
+  .project-display-content h3 {
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #1e293b;
+    line-height: 1.2;
+    background-color: #e2e8f0;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  .project-display-content p {
+    color: #4a5568;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    background-color: #edf2f7;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+  }
+  .project-display-content a {
+    color: #6366f1;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .project-display-content a:hover {
+    color: #d946ef;
+  }
+  .project-display-content a svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2.5;
+  }
+
+  
+  .case-study {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 40px auto;
+    border: 1px solid #e3e7ed;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #f4f6fa);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 1200px;
+    overflow: hidden;
+  }
+  
+  .case-study:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  }
+  
+  .case-study-content {
+    flex: 1 1 50%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .case-study-image {
+    flex: 1 1 50%;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0 20px 20px 0;
+  }
+  
+  .case-study-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 20px 20px 0;
+  }
+  
+  .project-logo {
+    width: 100px;
+    margin-bottom: 20px;
+    opacity: 0.85;
+  }
+  
+  h3 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    color: #222;
+  }
+  
+  .project-summary {
+    margin: 15px 0 25px;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .view-case-study {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #0056d2;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    width: fit-content;
+    transition: all 0.25s ease;
+  }
+  
+  .view-case-study:hover {
+    border-bottom: 1px solid #0056d2;
+    color: #003d9a;
+  }
+  
+  @media (max-width: 768px) {
+    .case-study {
+      flex-direction: column;
+      border-radius: 20px;
+    }
+  
+    .case-study-image {
+      order: -1;
+      border-radius: 20px 20px 0 0;
+    }
+  
+    .case-study-image img {
+      border-radius: 20px 20px 0 0;
+    }
+  
+    .case-study-content {
+      padding: 20px;
+    }
+  }
+
+    
