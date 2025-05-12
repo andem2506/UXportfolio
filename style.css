@@ -2,6 +2,9 @@ html {
     scroll-padding-top: 80px; /* Adjust the value to match the height of your navbar */
     scroll-behavior: smooth;
   }  
+  .lkdnbutton{
+    align-items: end;
+  }
 body {
     font-family: 'Inter', sans-serif; /* Updated to Inter */
     margin: 0;
