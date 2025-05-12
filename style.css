@@ -1,6 +1,11 @@
+html {
+    scroll-padding-top: 80px; /* Adjust the value to match the height of your navbar */
+    scroll-behavior: smooth;
+  }  
 body {
     font-family: 'Inter', sans-serif; /* Updated to Inter */
     margin: 0;
+    transition: transform 0.3s ease-in-out;
   }
   .font-heading {
     font-family: 'Montserrat', sans-serif;
@@ -52,7 +57,13 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
   }
-
+  .hero-centered {
+    min-height: calc(100vh - 72px); /* adjust based on your header height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .allprojectsbdy {
     font-family: 'Inter', sans-serif;
     margin: 0;

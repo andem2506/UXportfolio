@@ -13,6 +13,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Favicon for light mode -->
+    <link rel="icon" href="img/faviconblk.png" media="(prefers-color-scheme: light)">
+    <!-- Favicon for dark mode -->
+    <link rel="icon" href="img/faviconwhte.png" media="(prefers-color-scheme: dark)">
+
   </head>
 
   <body class="bg-white text-gray-900 scroll-smooth font-sans h-full">
@@ -20,10 +25,10 @@
     <div id="cursor-follower"></div>
     <canvas id="background-canvas"></canvas>
 
-    <header class="sticky top-0 bg-white/90 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200">
+    <header class="sticky top-0 bg-white/30 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200">
       <div class="flex justify-between items-center">
         <a href="#" class="font-heading text-2xl font-bold text-gray-800">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <img src="img/faviconblk.png" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </a>
         <nav>
           <ul class="flex space-x-6">
@@ -36,22 +41,23 @@
 
     <main class="px-6 py-12 md:px-20 lg:px-40 space-y-24 md:space-y-32">
 
-      <section class="flex flex-col md:flex-row items-center justify-center h-screen px-6 md:px-40 gap-8 lg:gap-16 text-center md:text-left">
+      <section class=" flex items-center justify-center px-6 md:px-40 gap-8 lg:gap-16 text-center md:text-left pt-32 pb-32 lg:pt-56 lg:pb-64">
         <!-- Text Content -->
         <div class="flex-1 text-center md:text-left space-y-6">
           <h1 class="text-5xl md:text-6xl font-heading font-extrabold leading-tight bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
             Hi, I'm Sai!
           </h1>
           <p class="text-xl text-gray-700 max-w-xl mx-auto md:mx-0">
-            UX Designer crafting elegant, intuitive digital experiences with a human-centered approach.
-          </p>
-          <a href="" class="font-heading inline-block bg-blue-600 text-white px-8 py-3.5 rounded-full text-lg font-medium hover:bg-blue-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            I design across dimensions: architecture, UX, and everything that sparks curiosity.
+            Studio founder, system thinker, watercolorist on weekends.
+            I believe great design lives at the intersection of creativity and context.          </p>
+          <a href="#work" class="font-heading inline-block bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-small hover:bg-blue-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
             scroll to View My Work ↓
           </a>
         </div>
       
         <!-- Image -->
-        <div class="flex-1 flex justify-center md:justify-end" data-aos="zoom-in">
+        <div class="flex-1 flex justify-center md:justify-end " data-aos="zoom-in">
           <img
             src="img/Andem-profile-pic-black.gif"
             alt="Portrait of Andem Sai"
@@ -131,7 +137,7 @@
         </div>
       </section>
 
-      <section id="about" class="space-y-12 max-w-3xl mx-auto text-center" data-aos="fade-up">
+      <section id="about" class="space-y-12 max-w-3xl mx-auto text-center" data-aos="fade-up" style="padding-top: 100; margin-top: 100;">
         <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-800">About Me</h2>
         <div class="text-lg text-gray-700 leading-relaxed space-y-6 text-left">
       
@@ -146,8 +152,7 @@
           </p>
       
           <p>
-            I started my career in 2015 with 2D and 3D CAD work. Later, I co-founded 
-            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
+            I began my career in 2015 as a Junior Architect, working on 2D and 3D CAD projects. After working with renowned architects in India such as Anagram, Spacematters, and QX Design, I went on to found            <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
               Elsewhere Lab
             </a>, a collaborative exploring design, materials, and technology.
           </p>
@@ -156,7 +161,7 @@
             I launched 
             <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
               Studio Antematter
-            </a> in Hyderabad, where we completed $1M+ in architectural projects and expanded into digital design for clients like 
+            </a> in Hyderabad, where we completed architectural projects worth more than $1Million and expanded into digital design for clients like 
             <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
               Pratyu
             </a>, 
@@ -175,7 +180,7 @@
             </a> and 
             <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
               Eva Ecosystems
-            </a> on app and website design.
+            </a> on app and web-based dashboard design.
           </p>
           <p>
             I’m currently 
@@ -189,7 +194,7 @@
             <em>Urdu shayari</em>. Lately, I've found joy in reading 
             <a href="#" class="text-indigo-600 font-medium transition transform hover:scale-105 hover:shadow-[0_0_10px_rgba(99,102,241,0.3)]">
               regional language books
-            </a>—a surprisingly fulfilling habit.
+            </a>, a surprisingly fulfilling habit.
           </p>
       
         </div>
@@ -322,7 +327,7 @@ class="w-full h-56 object-cover
         <p class="text-gray-700 max-w-xl mx-auto text-lg">
           Looking for a thoughtful, strategic UX designer? I’m open to full-time, or collaborative projects.
         </p>
-        <a href="mailto:your@email.com" class="font-heading inline-block bg-indigo-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+        <a href="mailto:vathsavandem@gmail.com" class="font-heading inline-block bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-small hover:bg-blue-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
           Get in Touch
         </a>
       </section>
