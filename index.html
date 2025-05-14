@@ -25,20 +25,8 @@
     <div id="cursor-follower"></div>
     <canvas id="background-canvas"></canvas>
 
-    <header class="sticky top-0 bg-white/30 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200 ">
-      <div class="flex justify-between items-center 2xl:mx-48">
-        <a href="index.html" class="font-heading text-2xl font-bold text-gray-800">
-            <img src="img/faviconblue.png" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-circle"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </a>
-        <nav>
-          <ul class="flex space-x-6">
-            <li><a href="index.html#about" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">About</a></li>
-            <li><a href="resume.html" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Resume</a></li>
-            <li><a href="index.html#contact" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <div id="header-placeholder" class="sticky top-0 bg-white/30 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200"></div>
+
 
     <main class="px-6 py-12 md:px-20 lg:px-40 space-y-24 md:space-y-32">
 
@@ -74,7 +62,7 @@
         <h2 class="text-4xl md:text-5xl font-heading font-bold text-center text-gray-800">Featured Case Studies</h2>
         <div>
           <section class="case-study bg-white rounded-2xl shadow-xl transform transition-all duration-300 ease-in-out hover:shadow-indigo-500/30 hover:shadow-2xl hover:-translate-y-3 hover:scale-[1.03] border border-gray-200 hover:border-indigo-500 " data-aos="fade-up">
-          <div class="case-study-image md:w-1/2 h-32 md:h-auto">
+          <div class="case-study-image">
             <img src="img/PMR_admindashboard.png" alt="Valet parking app Ecosystem design">
           </div>  
           <div class="case-study-content">
@@ -83,7 +71,7 @@
                 streamline organizer ops, and simplify check-ins for attendants. I led end-to-end UX design from 
                 research to real-time & offline-ready tools. Resulting in a 93% task success rate and a 60% drop in parking complaints.</p>
 
-              <a href="case-study-link.html" class="view-case-study">View case study →</a>
+              <a href="PMR_Casestudy.html" class="view-case-study">View case study →</a>
             </div>
            
           </section> 
@@ -359,5 +347,12 @@
           document.getElementById('arch_projects-section').innerHTML = data;
         });
     </script>
+      <script>
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+          });
+      </script>
   </body>
 </html>

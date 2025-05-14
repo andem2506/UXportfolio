@@ -5,6 +5,11 @@ html {
   .lkdnbutton{
     align-items: end;
   }
+  .metric-block {
+    background: linear-gradient(135deg, #e0f2fe, #bfdbfe);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);}
 body {
     font-family: 'Inter', sans-serif; /* Updated to Inter */
     margin: 0;
@@ -269,6 +274,7 @@ body {
     border-bottom: 1px solid #0056d2;
     color: #003d9a;
   }
+  
   
   @media (max-width: 768px) {
     .case-study {
