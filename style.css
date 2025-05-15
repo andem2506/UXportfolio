@@ -274,6 +274,31 @@ body {
     border-bottom: 1px solid #0056d2;
     color: #003d9a;
   }
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+.base-image, .overlay-image {
+    width: 400px; /* Increased size for better visual impact */
+    height: auto;
+    display: block;
+    transition: transform 0.2s ease-in-out; /* Smooth transform transition */
+}
+.overlay-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out, transform 0.2s ease-in-out; /* Added transform to overlay */
+}
+.image-container:hover .overlay-image {
+    opacity: 1;
+}
+
+.image-container:hover .text-overlay {
+    opacity: 1; /* Fade in on hover */
+}
   
   
   @media (max-width: 768px) {
