@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RideCar Limousine Website Redesign | UX Case Study | Andem Sai</title>
+    <meta name="description" content="UX Case Study on the redesign of RideCar Limousine's website. Migration from WordPress to Webflow with improved UX, accessibility, and performance." />
+    <meta name="keywords" content="UX Designer, UI Design, RideCar, Limousine, Webflow, Accessibility, Case Study" />
+    <link rel="canonical" href="https://yourdomain.com/ridecar" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/faviconblk.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="img/faviconwhte.png" media="(prefers-color-scheme: dark)">
+  </head>
+
+  <body class="bg-white text-gray-900 scroll-smooth font-sans h-full">
+    <div id="custom-cursor"></div>
+    <div id="cursor-follower"></div>
+    <div id="header-placeholder" class="sticky top-0 bg-white/30 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200"></div>
+
+    <main class="bg-white text-gray-800">
+      <section class="max-w-7xl mx-auto py-24 px-6 text-center space-y-6" data-aos="fade-up">
+        <h1 class="text-5xl font-extrabold tracking-tight">Website Redesign - RideCar Limousine </h1>
+        <p class="text-xl max-w-3xl mx-auto text-gray-600">Redesigning and Migrating from WordPress to Webflow with a focus on accessibility, performance and visual clarity</p>
+        <img src="img/ridecar/ride19.png" alt="RideCar Website Hero" class="mx-auto w-full max-w-4xl mt-8" data-aos="zoom-in" />
+      </section>
+
+      <section class="bg-gray-50 py-20 px-6">
+        <div class="max-w-7xl mx-auto space-y-16">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-aos="fade-up">
+            <div>
+              <h2 class="text-4xl font-bold mb-6">Project Overview</h2>
+              <p class="text-lg leading-relaxed text-justify">
+                I led the redesign of RideCar Limousine’s website, migrating it from WordPress to Webflow to enhance <span class="text-indigo-600 font-medium"> responsiveness, information architecture, and accessibility</span>. This included creating a new sitemap, designing a component library, and collaborating with developers for a pixel-perfect build. The project also included SEO enhancement, performance optimization, and visual refinement through interaction design.
+              </p>
+            </div>
+            <div>
+              <img src="img/ridecar/ride8.jpeg" alt="Overview Diagram" class=" rounded-2xl">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10" data-aos="fade-up">
+            <div>
+              <h2 class="text-4xl font-bold mb-6">Challenges</h2>
+              <p class="text-lg leading-relaxed text-justify">
+                The original site lacked intuitive navigation, modern visuals, and accessibility compliance. Hidden CTAs, poor mobile responsiveness, and inconsistent structure hurt usability. We had to transform this into a<span class="text-indigo-600 font-medium"> scalable, branded, and inclusive digital experience</span>.
+              </p>
+            </div>
+            <div>
+              <h2 class="text-4xl font-bold mb-6">Goals</h2>
+              <p class="text-lg leading-relaxed text-justify">
+                • Migrate to Webflow with modular design components<br>
+                • Create a consistent, accessible, modern user experience<br>
+                • Enhance usability, SEO, performance and engagement metrics<br>
+                • Build a scalable style guide for long-term growth
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<section class="py-10 px-6">
+  <div class="max-w-7xl mx-auto space-y-4" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-6">Insights Summary</h2>
+    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-xl">
+      <p class="text-lg leading-relaxed">
+        <ul class="list-disc list-inside text-lg space-y-2">
+            <li><span class="font-semibold text-blue-800">Accessibility-first design</span> dramatically improved user inclusion and usability.</li>
+            <br>
+            <li><span class="font-semibold text-blue-800">Microinteractions and animation</span> brought life to the brand without compromising performance.</li>
+            <br>
+            <li><span class="font-semibold text-blue-800">Migrating to Webflow</span> enabled real-time updates and empowered non-developers.</li>
+            <br>
+            <li>A scalable <span class="font-semibold text-blue-800">style guide</span> ensured long-term maintainability and consistency.</li>
+          </ul>        
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto space-y-12" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Design Process</h2>
+          <div>
+            <div class="pb-20">
+  <h3 class="text-2xl font-semibold">1. Discovery & Research</h3>
+  <p class="text-lg leading-relaxed">Conducted heuristic evaluation and accessibility audits using WAVE and Axe tools. Identified<span class="text-indigo-600 font-medium"> 36+ WCAG violations</span> including missing alt tags, poor contrast, and focus states. Redundant content and poor responsiveness were flagged for redesign.</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mb-6">
+    <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-2xl">
+      <p class="text-lg font-semibold text-red-700">Missing Alt Tags</p>
+      <p class="text-gray-700 text-lg">Numerous images lacked descriptive alternative text, creating barriers for screen readers.</p>
+    </div>
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-2xl">
+      <p class="text-lg font-semibold text-yellow-700">Poor Color Contrast</p>
+      <p class="text-gray-700 text-lg">Text and background combinations failed WCAG contrast ratios.</p>
+    </div>
+    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-2xl">
+      <p class="text-lg font-semibold text-blue-700">Focus States Missing</p>
+      <p class="text-gray-700 text-lg">Interactive elements lacked clear focus indicators, harming keyboard navigation.</p>
+    </div>
+</div>
+</div>
+          <div class="mb-20">
+  <h3 class="text-2xl font-semibold">2. Information Architecture</h3>
+  <p class="text-lg leading-relaxed">Created a streamlined sitemap addressing various user goals: bookings, corporate inquiries, service area exploration. <span class="text-indigo-600 font-medium">Card sorting</span> validated logical grouping of pages.</p>
+  <div>
+    <h3 class="text-lg font-semibold mb-4">Site Content Structure</h3>
+    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+      <div>
+        <h4 class="font-bold text-lg text-blue-700 mb-2">Primary Navigation</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm">
+          <li>Home</li>
+          <li>Services</li>
+          <li>Business</li>
+          <li>City Guide</li>
+          <li>Blog</li>
+          <li>Help Center</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg text-blue-700 mb-2">Service Subpages</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm">
+          <li>Private Aviation</li>
+          <li>Executive Travel</li>
+          <li>Meetings & Events</li>
+          <li>Roadshows</li>
+          <li>Partnerships</li>
+          <li>Travel Agencies</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg text-blue-700 mb-2">Support & Legal</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm">
+          <li>Contact Us</li>
+          <li>Careers</li>
+          <li>FAQ</li>
+          <li>Privacy Policy</li>
+          <li>Terms of Service</li>
+          <li>Accessibility</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg text-blue-700 mb-2">Footer Links</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm">
+          <li>About RideCar</li>
+          <li>Testimonials</li>
+          <li>Press</li>
+          <li>Blog</li>
+          <li>Terms of Service</li>
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+          <div class="pb-20">
+  <h3 class="text-2xl font-semibold">3. Component Library</h3>
+  <p class="text-lg leading-relaxed">Designed and documented reusable components in Figma including a responsive<span class="text-indigo-600 font-medium"> nav bar, mega footer, forms, cards, buttons</span> with hover/focus states, and grouped links for high scalability and accessibility.</p>
+  <div class="flex flex-wrap gap-6 mt-4 mb-6">
+    <img src="img/ridecar/Text and Color Styles.png" alt="Figma component library" class=" w-full rounded-2xl" />
+  </div>  
+</div>
+<div>
+  <h3 class="text-2xl font-semibold">4. Hi-Fi Prototyping</h3>
+  <p class="text-lg leading-relaxed">Designed <span class="text-indigo-600 font-medium">35+ screens</span> for desktop and mobile. Prioritized clarity, scannable layouts, strong CTA hierarchy and storytelling with imagery and iconography. Prototypes shared with stakeholders for feedback and iteration.</p>
+  <img src="img/ridecar/ridemock0.png" alt="Hi-fi screens" class="mt-4 w-full" />
+</div>
+          <div class="pb-20">
+            <h3 class="text-2xl font-semibold">5. Interactions & Animation</h3>
+            <p class="text-lg leading-relaxed">Created 7 interactive graphics using <span class="text-indigo-600 font-medium">After Effects</span>. Microinteractions (collapsible menus, button transitions, hover states) were added to improve interactivity and engagement while meeting motion accessibility preferences.</p>
+            <div class=" flex justify-center items-center">
+                <div class="bg-white p-8 rounded-lg shadow-md my-10">
+                    <div class="image-container mx-auto">
+                        <img src="img/ridecar/ridebase1.png" alt="Base Image" class="base-image">
+                        <img src="img/ridecar/ridebase2.png" alt="Overlay Image" class="overlay-image">
+                    </div>
+                    <p class="mt-4 text-gray-600 text-center">Hover over the image to see the effect.</p>
+                </div>
+            </div>  
+        </div>
+          <div>
+            <h3 class="text-2xl font-semibold">6. Development Handoff</h3>
+            <p class="text-lg leading-relaxed">I ensured a smooth Figma to Webflow handoff by clear communication through labelled design assets, 
+              structured design guide and responsive prototype. I set up the Figma prototype, <span class="text-indigo-600 font-medium">leveraging Dev Mode, and provided detailed documentation</span>. 
+              I also held a handoff meeting with the developers.
+                <br>
+                <br>
+                I organized <span class="text-indigo-600 font-medium">rigorous testing across devices and browsers</span>, to minimize developer 
+                bottlenecks, I provided an <span class="text-indigo-600 font-medium">instructional document</span> for well-structured CMS collections in Webflow. 
+                This approach helped guarantee the final site mirrored the Figma design and was user-friendly.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gray-50 py-20 px-6">
+        <div class="max-w-7xl mx-auto space-y-10" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Accessibility & Performance</h2>
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-xl">
+                <h3 class="text-2xl font-semibold mb-2">Pre-redesign Performance</h3>
+                <p class="text-lg leading-relaxed">
+                  The original site had a website performance score of <span class="font-bold text-red-600">61</span>, with key issues including blocking scripts, non-optimized images, and missing metadata. Accessibility was rated at <span class="font-bold text-red-600">66</span> due to lack of alt attributes, focus indicators, and semantic structure.
+                </p>
+              </div>
+              <img src="img/ridecar/ride9.jpeg" alt="Lighthouse performance report" class="justify-center" />
+          </div>
+      </section>
+
+      <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto space-y-10" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Mobile App Prototype for Drivers</h2>
+          <p class="text-lg leading-relaxed">A lightweight Android app prototype was also developed to support RideCar drivers. It helps<span class="text-indigo-600 font-medium"> manage ride status, payments, and view rider notes</span> and preferences in real time.</p>
+          <img src="img/ridecar/ride10.png" alt="Driver App Screens" class="w-full h-[32rem] object-cover">
+        </div>
+      </section>
+
+      <section class="bg-gray-50 py-20 px-6">
+  <div class="max-w-7xl mx-auto" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-6">Results & Business Impact</h2>
+    <div class="overflow-x-auto pb-20">
+      <table class="table-auto w-full text-left text-lg bg-white border border-gray-200 rounded-lg">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-3 border-b">Metric</th>
+            <th class="px-4 py-3 border-b">Before</th>
+            <th class="px-4 py-3 border-b">After (4 months)</th>
+            <th class="px-4 py-3 border-b">Improvement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="px-4 py-3 border-b">Monthly Organic Traffic</td>
+            <td class="px-4 py-3 border-b">~2,100</td>
+            <td class="px-4 py-3 border-b">~2,365</td>
+            <td class="px-4 py-3 border-b">⬆️ +12.6%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 border-b">Website Reach</td>
+            <td class="px-4 py-3 border-b">Baseline</td>
+            <td class="px-4 py-3 border-b">+21%</td>
+            <td class="px-4 py-3 border-b">⬆️</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 border-b">Avg. Session Duration</td>
+            <td class="px-4 py-3 border-b">1 min 12 sec</td>
+            <td class="px-4 py-3 border-b">2 min 8 sec</td>
+            <td class="px-4 py-3 border-b">⬆️ +85%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 border-b">Bounce Rate</td>
+            <td class="px-4 py-3 border-b">63.4%</td>
+            <td class="px-4 py-3 border-b">46.9%</td>
+            <td class="px-4 py-3 border-b">⬇️ -26%</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 border-b">Accessibility Score</td>
+            <td class="px-4 py-3 border-b">66/100</td>
+            <td class="px-4 py-3 border-b">100/100</td>
+            <td class="px-4 py-3 border-b">✅ Full compliance</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">Booking Conversions (est.)</td>
+            <td class="px-4 py-3">Moderate</td>
+            <td class="px-4 py-3">+18% uplift</td>
+            <td class="px-4 py-3">⬆️ Post-redesign</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">Mobile compatibility</td>
+            <td class="px-4 py-3">No</td>
+            <td class="px-4 py-3">Yes</td>
+            <td class="px-4 py-3">✅ Responsive design</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+            <div class="metric-block">
+              <p class="text-5xl font-extrabold text-blue-800">+21%</p>
+              <p class="mt-2 text-lg">Website Reach</p>
+            </div>
+            <div class="metric-block">
+              <p class="text-5xl font-extrabold text-blue-800">+12.6%</p>
+              <p class="mt-2 text-lg">Traffic Growth</p>
+            </div>
+            <div class="metric-block">
+              <p class="text-5xl font-extrabold text-blue-800">+85%</p>
+              <p class="mt-2 text-lg">Avg. Session Duration</p>
+            </div>
+            <div class="metric-block">
+              <p class="text-5xl font-extrabold text-blue-800">-26%</p>
+              <p class="mt-2 text-lg">Bounce Rate</p>
+            </div>
+            <div class="metric-block">
+              <p class="text-5xl font-extrabold text-blue-800">100/100</p>
+              <p class="mt-2 text-lg">Accessibility Score</p>
+            </div>
+            <div class="metric-block">
+              <p class="text-5xl font-extrabold text-blue-800">+18%</p>
+              <p class="mt-2 text-lg">Booking Conversions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto space-y-10" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Key Takeaways</h2>
+          <ul class="list-disc list-inside text-lg space-y-2">
+            <li>Performance and SEO optimization led to tangible business improvements.</li>
+            <li>Microinteractions and animations, added polish and engagement without compromising performance or accessibility.</li>
+            <li>Accessibility-first approach resolved 36+ compliance issues, achieving a perfect Lighthouse accessibility score of 100.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="text-center pt-10 pb-24 space-x-6" data-aos="fade-up">
+        <a href="index.html#work" class="bg-blue-600 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-blue-700 transition-all duration-200">
+          ← Back to Case Studies
+        </a>
+        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-blue-700 transition-all duration-200">
+          Back to top
+        </a>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8 md:py-12">
+      <div class="container mx-auto px-6 md:px-20 lg:px-40 text-center">
+        <p class="text-md text-gray-400">© 2025 Andem Sai. All rights reserved.</p>
+        <div class="mt-4 flex justify-center space-x-6">
+          <a href="https://www.linkedin.com/in/andem1/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors duration-200">LinkedIn</a>
+          <a href="https://github.com/andem2506" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 transition-colors duration-200">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header-placeholder').innerHTML = data;
+        });
+    </script>
+  </body>
+</html>
