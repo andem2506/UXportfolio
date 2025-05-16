@@ -299,7 +299,15 @@ body {
 .image-container:hover .text-overlay {
     opacity: 1; /* Fade in on hover */
 }
-  
+.parallax-img {
+  transform: translateY(0px);
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+.parallax-scroll {
+  transform: translateY(-150px);
+}
+
   
   @media (max-width: 768px) {
     .case-study {
