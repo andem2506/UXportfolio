@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concert Buddy | UX Case Study | Andem Sai</title>
+  <meta name="description" content="UX case study for Concert Buddy, a mobile app that enhances the concert experience.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2C8G747MPL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2C8G747MPL');
+</script>
+
+<body class="bg-white text-gray-900 scroll-smooth font-sans h-full">
+  <main class="bg-white text-gray-800" id="concertbuddy-top">
+    <section class="max-w-7xl mx-auto py-24 px-6 text-center space-y-6" data-aos="fade-up">
+      <h1 class="text-5xl font-extrabold tracking-tight">Concert Buddy</h1>
+      <p class="text-xl max-w-3xl mx-auto text-gray-600">Designing a smarter, more social concert-going experience</p>
+      <img src="img/concertbuddy/concertbuddy-hero.png" alt="Concert Buddy App Hero" class="mx-auto w-full max-w-4xl mt-8" data-aos="zoom-in" />
+    </section>
+
+    <section class="bg-gray-50 py-20 px-6">
+      <div class="max-w-7xl mx-auto space-y-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-aos="fade-up">
+          <div>
+            <h2 class="text-4xl font-bold mb-6">Project Overview</h2>
+            <p class="text-lg leading-relaxed text-justify">
+              Concert Buddy is a mobile application that empowers concert-goers to plan events, coordinate with friends, and capture memories seamlessly. Our team of five tackled this challenge over a 9-week sprint with a focus on personalized and group-based user journeys.
+            </p>
+          </div>
+          <div>
+            <img src="img/concertbuddy/concertbuddy-overview.png" alt="Overview Diagram" class="rounded-xl shadow-lg">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10" data-aos="fade-up">
+          <div>
+            <h2 class="text-4xl font-bold mb-6">Challenge</h2>
+            <p class="text-lg leading-relaxed text-justify">
+              Planning concerts with friends is chaotic—from discovering shows to organizing logistics. Concert Buddy aims to centralize and simplify this experience for users.
+            </p>
+          </div>
+          <div>
+            <h2 class="text-4xl font-bold mb-6">Goals</h2>
+            <p class="text-lg leading-relaxed text-justify">
+              • Streamline the concert discovery and planning process.<br>
+              • Enable group coordination and shared memory capture.<br>
+              • Provide contextual, real-time insights and reminders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 py-20 px-6">
+      <div class="max-w-7xl mx-auto space-y-10" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-6">Impact</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+          <div>
+            <p class="text-5xl font-extrabold text-blue-800">5/6</p>
+            <p class="mt-2 text-lg">Usability Task Success</p>
+          </div>
+          <div>
+            <p class="text-5xl font-extrabold text-blue-800">88%</p>
+            <p class="mt-2 text-lg">Users Prioritize Artist Over Venue</p>
+          </div>
+          <div>
+            <p class="text-5xl font-extrabold text-blue-800">68%</p>
+            <p class="mt-2 text-lg">Attend in Groups of 4+</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 px-6">
+      <div class="max-w-7xl mx-auto space-y-10" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-4">User Research</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <img src="img/concertbuddy/persona.png" alt="User Persona" class="rounded-xl shadow-lg max-w-xl">
+          <div>
+            <ul class="list-disc list-inside text-lg space-y-4">
+              <li>10 In-depth Interviews</li>
+              <li>Survey (67 responses)</li>
+              <li>Affinity mapping, journey mapping, persona development</li>
+              <li><span class="text-indigo-600 font-bold">54%</span> prefer ride-shares over parking hassles</li>
+              <li><span class="text-indigo-600 font-bold">68%</span> go with 4+ friends</li>
+              <li><span class="text-indigo-600 font-bold">88%</span> focus on artists over venues</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 px-6">
+      <div class="max-w-7xl mx-auto space-y-10" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-6">User Journey Mapping</h2>
+        <p class="text-gray-700 text-lg leading-relaxed">
+          Mapping user emotions from discovery to reflection revealed moments of delight and pain. The Concert Buddy experience is designed to elevate emotional highs and address friction points.
+        </p>
+        <img src="img/concertbuddy/journey-map.png" alt="User Journey Map" class="rounded-xl shadow-lg mt-6">
+      </div>
+    </section>
+
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto space-y-12" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Design Process</h2>
+          <ol class="list-decimal pl-6 space-y-2 text-lg text-gray-700">
+            <li>Discovery: user interviews, affinity mapping, and persona spectrum development</li>
+            <li>Design Phase I: moodboards, information architecture, and wireframes</li>
+            <li>Testing Phase I: observational testing, AEIOU framework, priority matrix</li>
+            <li>Design Phase II: visual system, high-fidelity prototyping</li>
+            <li>Delivery: Figma prototype, team report and documentation</li>
+          </ol>
+        </div>
+      </section>
+  
+      <!-- MoSCoW Prioritization Section -->
+      <section class="py-20 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Feature Prioritization</h2>
+          <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            To ensure the MVP focused on real user needs, we used the MoSCoW framework to prioritize features such as:
+          </p>
+          <ul class="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>Must: Personalized concert discovery, group coordination, memory timeline</li>
+            <li>Should: Real-time alerts, post-concert sharing features</li>
+            <li>Could: Venue ratings, fan meetups, public photo albums</li>
+            <li>Won’t: Ticketing integration (deferred for future phases)</li>
+          </ul>
+        </div>
+      </section>
+  
+      <!-- Usability Testing Details -->
+      <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Usability Testing Findings</h2>
+          <ul class="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>5 out of 6 users successfully completed all core tasks</li>
+            <li>Users appreciated the group planning feature and visual event cards</li>
+            <li>Feedback led to improvements in navigation flow and confirmation prompts</li>
+            <li>One key pain point was visibility of shared tasks during event planning</li>
+          </ul>
+        </div>
+      </section>
+  
+      <!-- Hi-Fi Prototype -->
+      <section class="py-20 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto space-y-10" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Final Deliverables</h2>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Based on testing feedback, we iterated and delivered a polished high-fidelity prototype. It includes intuitive navigation, visual timelines, and personalized recommendations.
+          </p>
+          <img src="img/concertbuddy/concertbuddy-hifi.png" alt="Hi-fi Prototype" class="rounded-xl shadow-lg">
+        </div>
+      </section>
+  
+      <!-- Reflections Section -->
+      <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-6">Reflections</h2>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Working on Concert Buddy reinforced the value of iterative design and empathy-driven research. Mapping out detailed user journeys early on provided a strong foundation for feature alignment. Usability testing brought clarity to our priorities and encouraged deliberate design decisions.
+          </p>
+        </div>
+      </section>
+
+    <!-- Inserted additional sections: Design Process, Prioritization, Testing, Final Deliverables, Reflections, Navigation -->
+    {{RESTORE_ADDITIONS_FROM_PREVIOUS_UPDATE}}
+  </main>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+</body>
+</html>
