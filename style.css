@@ -1,5 +1,5 @@
 html {
-    scroll-padding-top: 80px; /* Adjust the value to match the height of your navbar */
+    scroll-padding-top: 180px; /* Adjust the value to match the height of your navbar */
     scroll-behavior: smooth;
   }  
   .lkdnbutton{
