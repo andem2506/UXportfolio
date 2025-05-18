@@ -5,6 +5,63 @@ html {
   .lkdnbutton{
     align-items: end;
   }
+    /* For 13.5" MacBook Air (around 1440px width) */
+    @media screen and (max-width: 1440px) {
+      .max-w-xs {
+          max-width: 350px; /* Adjust image width for smaller screens */
+      }
+      .max-w-sm {
+          max-width: 400px; /* Adjust text size for 13.5" screen */
+      }
+      .text-5xl {
+          font-size: 3rem; /* Adjust text size for this screen */
+      }
+  }
+
+  /* For 27" Screen (around 2560px width) */
+  @media screen and (min-width: 2560px) {
+      .text-5xl {
+          font-size: 5rem; /* Increase font size for larger screens */
+      }
+      .max-w-xs {
+          max-width: 450px; /* Increase image size for large screens */
+      }
+      .lg\:pl-24 {
+          padding-left: 8rem; /* Increase padding for large screens */
+      }
+  }
+
+     /* Custom CSS for the wobble effect */
+     .wobble-image {
+      transition: transform 0.3s ease; /* Smooth transition for the animation */
+  }
+
+  .wobble-image:hover {
+      animation: wobble 0.5s; /* Apply the wobble animation on hover */
+      transform-origin: center; /* Define the center of the transformation */
+  }
+
+  @keyframes wobble {
+      0%, 100% {
+          transform: translateX(0);
+      }
+      15% {
+          transform: translateX(-6px) rotate(-3.6deg);
+      }
+      30% {
+          transform: translateX(5px) rotate(2.4deg);
+      }
+      45% {
+          transform: translateX(-4px) rotate(-1.2deg);
+      }
+      60% {
+          transform: translateX(3px) rotate(0.6deg);
+      }
+      75% {
+          transform: translateX(-2px) rotate(-0.3deg);
+      }
+  }
+
   .metric-block {
     background: linear-gradient(135deg, #e0f2fe, #bfdbfe);
     border-radius: 1rem;
