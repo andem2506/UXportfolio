@@ -222,7 +222,7 @@
       <div class="p-6 space-y-4 flex-grow flex flex-col">
         <h3 class="text-xl font-heading font-bold text-gray-800 line-clamp-2">Usability Evaluation of Midtown Comics Website</h3>
         <p class="text-gray-600 text-sm flex-grow line-clamp-3">Simplified interactions for elderly users, leading to a significant increase in daily active users and task completion rates.</p>
-        <a href="#" class="font-heading inline-block mt-auto text-purple-600 hover:text-purple-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+        <a href="#" class="openModal font-heading inline-block mt-auto text-purple-600 hover:text-purple-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
       </div>
     </div>
 
@@ -246,7 +246,7 @@
       <div class="p-6 space-y-4 flex-grow flex flex-col">
         <h3 class="text-xl font-heading font-bold text-gray-800 line-clamp-2">User Research and Website design for MSMM</h3>
         <p class="text-gray-600 text-sm flex-grow line-clamp-3">Improved user flow and reduced onboarding time by 30%, enhancing overall user satisfaction and efficiency.</p>
-        <a href="#" class="font-heading inline-block mt-auto text-indigo-600 hover:text-indigo-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+        <a href="#" class="openModal font-heading inline-block mt-auto text-indigo-600 hover:text-indigo-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
       </div>
     </div>
 
@@ -258,7 +258,7 @@
       <div class="p-6 space-y-4 flex-grow flex flex-col">
         <h3 class="text-xl font-heading font-bold text-gray-800 line-clamp-2">Multichannel Roadside Assistance System</h3>
         <p class="text-gray-600 text-sm flex-grow line-clamp-3">Simplified interactions for elderly users, leading to a significant increase in daily active users and task completion rates.</p>
-        <a href="#" class="font-heading inline-block mt-auto text-purple-600 hover:text-purple-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+        <a href="#" class="openModal font-heading inline-block mt-auto text-purple-600 hover:text-purple-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
       </div>
     </div>
 
@@ -270,7 +270,7 @@
       <div class="p-6 space-y-4 flex-grow flex flex-col">
         <h3 class="text-xl font-heading font-bold text-gray-800 line-clamp-2">Information Architecture & Content Strategy for CNN Underscored</h3>
         <p class="text-gray-600 text-sm flex-grow line-clamp-3">Improved user flow and reduced onboarding time by 30%, enhancing overall user satisfaction and efficiency.</p>
-        <a href="#" class="font-heading inline-block mt-auto text-indigo-600 hover:text-indigo-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+        <a href="#" class="openModal font-heading inline-block mt-auto text-indigo-600 hover:text-indigo-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
       </div>
     </div>
 
@@ -282,7 +282,7 @@
       <div class="p-6 space-y-4 flex-grow flex flex-col">
         <h3 class="text-xl font-heading font-bold text-gray-800 line-clamp-2">Personal Design System (Academic Project)</h3>
         <p class="text-gray-600 text-sm flex-grow line-clamp-3">Enhanced mobile conversion rate by over 25% with an intuitive checkout process and visually appealing product displays.</p>
-        <a href="#" class="font-heading inline-block mt-auto text-teal-600 hover:text-teal-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
+        <a href="#" class=" openModal font-heading inline-block mt-auto text-teal-600 hover:text-teal-800 font-medium group-hover:translate-x-1 transition-transform duration-200">Read More →</a>
       </div>
     </div> 
 
@@ -342,6 +342,23 @@
       </section>
 
     </main>
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+      <!-- Modal Content -->
+      <div class="bg-white rounded-xl shadow-lg w-96 p-6 relative">
+        <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl">&times;</button>
+        <h2 class="text-xl font-semibold mb-4 text-center">Hello 👋</h2>
+        <p class="text-gray-700 text-center"><span class="font-semibold text-indigo-400">Under construction </span>
+          <span class="text-2xl font-semibold">🚧</span> 
+          <hr>
+          <br>
+          <div class="text-center">Feel free to reach out if you'd like to learn more about this project!
+           <br>
+           <span>Thanks for Understanding</span>
+           <span class="text-2xl font-semibold">🫶</span>
+          </div>
+        </p>
+      </div>
+    </div> 
 
     <!-- Footer section -->
 
@@ -375,5 +392,6 @@
             document.getElementById('header-placeholder').innerHTML = data;
           });
       </script>
+      
   </body>
 </html>

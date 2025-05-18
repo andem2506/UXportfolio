@@ -244,3 +244,21 @@ window.addEventListener('load', () => {
     });
   }, 300);
 });
+
+  document.querySelectorAll('.openModal').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('modal').classList.remove('hidden');
+    });
+  });
+
+  document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('modal').classList.add('hidden');
+  });
+
+  window.addEventListener('click', function(e) {
+    const modal = document.getElementById('modal');
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
