@@ -106,111 +106,85 @@ if (!isTouchDevice && typeof gsap !== 'undefined') {
 }
 
 // --- Background Animation (Canvas) ---
+// Background Canvas Animation (Dotted Grid)
 const canvas = document.getElementById('background-canvas');
-if (canvas) {
-  const ctx = canvas.getContext('2d');
-  const gridSize = 30;
-  const linesColor = 'rgba(0, 0, 0, 0.15)';
-  const stiffness = 0.08;
-  const damping = 0.8;
-  let points = [];
-  let columns, rows;
+const ctx = canvas.getContext('2d');
 
-  class Point {
-    constructor(x, y) {
-      this.x = x; this.y = y; this.baseX = x; this.baseY = y;
-      this.vx = 0; this.vy = 0;
-      this.interactionRadius = 180;
-      this.forceFactor = 8;
-    }
-    update() {
-      const dx = this.x - mouseX;
-      const dy = this.y - mouseY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < this.interactionRadius && !isTouchDevice) {
-        const force = (this.interactionRadius - distance) / this.interactionRadius;
-        const angle = Math.atan2(dy, dx);
-        this.vx += Math.cos(angle) * force * this.forceFactor;
-        this.vy += Math.sin(angle) * force * this.forceFactor;
-      }
-      const dxSpring = this.x - this.baseX;
-      const dySpring = this.y - this.baseY;
-      this.vx += -dxSpring * stiffness;
-      this.vy += -dySpring * stiffness;
-      this.x += this.vx;
-      this.y += this.vy;
-      this.vx *= damping;
-      this.vy *= damping;
-    }
-  }
+let dots = []; // Array to store dot objects
+const dotRadius = 1.5; // Radius of each dot
+const dotSpacing = 40; // Spacing between dots
+const maxDistance = 150; // Max distance for dots to connect to cursor
+const maxOpacity = 0.6; // Max opacity for dots
 
-  function createGrid() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    columns = Math.ceil(canvas.width / gridSize) + 1;
-    rows = Math.ceil(canvas.height / gridSize) + 1;
-    points = [];
-    for (let i = 0; i < columns; i++) {
-      points[i] = [];
-      for (let j = 0; j < rows; j++) {
-        points[i][j] = new Point(i * gridSize, j * gridSize);
-      }
-    }
-  }
-
-  function drawGrid() {
-    ctx.strokeStyle = linesColor;
-    ctx.lineWidth = 0.15;
-    for (let i = 0; i < columns - 1; i++) {
-      for (let j = 0; j < rows - 1; j++) {
-        const p1 = points[i][j],
-          p2 = points[i + 1][j],
-          p3 = points[i + 1][j + 1],
-          p4 = points[i][j + 1];
-        ctx.beginPath();
-        ctx.moveTo(p1.x, p1.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.lineTo(p3.x, p3.y);
-        ctx.lineTo(p4.x, p4.y);
-        ctx.closePath();
-        ctx.stroke();
-      }
-    }
-  }
-
-  function updateGrid() {
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        points[i][j].update();
-      }
-    }
-  }
-
-  function animateCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    updateGrid();
-    drawGrid();
-    requestAnimationFrame(animateCanvas);
-  }
-
-  function initCanvasAnimation() {
-    createGrid();
-    animateCanvas();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCanvasAnimation);
-  } else {
-    initCanvasAnimation();
-  }
-
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(initCanvasAnimation, 100);
-  });
+// Function to resize canvas to fill the window
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  initDots(); // Reinitialize dots on resize
 }
 
+// Function to initialize dots
+function initDots() {
+  dots = []; // Clear existing dots
+  for (let x = 0; x < canvas.width; x += dotSpacing) {
+    for (let y = 0; y < canvas.height; y += dotSpacing) {
+      dots.push({
+        x: x + (Math.random() - 0.5) * (dotSpacing / 2), // Add slight random offset
+        y: y + (Math.random() - 0.5) * (dotSpacing / 2),
+        opacity: 0, // Initial opacity
+        vx: (Math.random() - 0.5) * 0.1, // Small random velocity for subtle movement
+        vy: (Math.random() - 0.5) * 0.1,
+      });
+    }
+  }
+}
+
+// Mouse position tracking
+let mouse = { x: 0, y: 0 };
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+// Animation loop
+function animateDots() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+  dots.forEach(dot => {
+    // Update dot position with subtle movement
+    dot.x += dot.vx;
+    dot.y += dot.vy;
+
+    // Bounce off edges
+    if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
+    if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
+
+    // Calculate distance to mouse
+    const dist = Math.sqrt(Math.pow(dot.x - mouse.x, 2) + Math.pow(dot.y - mouse.y, 2));
+
+    // Adjust opacity based on distance to mouse
+    if (dist < maxDistance) {
+      dot.opacity = maxOpacity * (1 - dist / maxDistance);
+    } else {
+      dot.opacity = 0; // Fade out if too far
+    }
+
+    // Draw dot
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(99, 102, 241, ${dot.opacity})`; // Indigo color with dynamic opacity
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animateDots); // Loop animation
+}
+
+// Event listeners
+window.addEventListener('resize', resizeCanvas);
+window.addEventListener('load', () => {
+  resizeCanvas(); // Initial resize and dot setup
+  animateDots(); // Start animation
+});
 // Scroll to #moreprojects manually with offset
 const scrollBtn = document.getElementById("scrollButton");
 if (scrollBtn) {
