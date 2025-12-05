@@ -7,44 +7,18 @@ AOS.init({
 
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-// --- Custom Cursor ---
-const customCursor = document.getElementById("custom-cursor");
-const cursorFollower = document.getElementById("cursor-follower");
+// --- REMOVE CUSTOM CURSOR ---
+// (All custom cursor DOM, GSAP, and event listeners removed)
 
-if (!isTouchDevice) {
-  document.body.style.cursor = 'none';
-} else {
-  if (customCursor) customCursor.style.display = 'none';
-  if (cursorFollower) cursorFollower.style.display = 'none';
-}
+// --- REMOVE BACKGROUND CANVAS ANIMATION ---
+// (All canvas drawing logic, mouse tracking, and animation loop removed)
 
-let mouseX = 0;
-let mouseY = 0;
+// --- Project Hover Animation (kept as-is) ---
+const hoverableElements = document.querySelectorAll('#project-list li');
+const projectCards = document.querySelectorAll('.project-display-window');
+let activeProject = 'project1';
 
-if (!isTouchDevice && typeof gsap !== 'undefined') {
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    gsap.to(customCursor, { x: mouseX, y: mouseY, duration: 0.08, ease: "power1.out" });
-    gsap.to(cursorFollower, { x: mouseX, y: mouseY, duration: 0.3, ease: "power2.out" });
-  });
-
-  document.addEventListener("mouseenter", () => {
-    if (customCursor) customCursor.classList.add("active");
-  });
-  document.addEventListener("mouseleave", () => {
-    if (customCursor) customCursor.classList.remove("active");
-  });
-  document.addEventListener("click", () => {
-    if (customCursor) {
-      gsap.fromTo(customCursor, { scale: 1.4 }, { scale: 1, duration: 0.2, ease: "elastic.out(1, 0.3)" });
-    }
-  });
-
-  const hoverableElements = document.querySelectorAll('#project-list li');
-  const projectCards = document.querySelectorAll('.project-display-window');
-  let activeProject = 'project1';
-
+if (typeof gsap !== 'undefined') {
   hoverableElements.forEach((listItem, index) => {
     listItem.addEventListener('mouseenter', () => {
       const project = listItem.dataset.project;
@@ -68,6 +42,7 @@ if (!isTouchDevice && typeof gsap !== 'undefined') {
     });
   });
 
+  // ScrollTrigger for project cards
   gsap.utils.toArray('.project-display-window').forEach((card) => {
     ScrollTrigger.create({
       trigger: card,
@@ -105,87 +80,7 @@ if (!isTouchDevice && typeof gsap !== 'undefined') {
   });
 }
 
-// --- Background Animation (Canvas) ---
-// Background Canvas Animation (Dotted Grid)
-const canvas = document.getElementById('background-canvas');
-const ctx = canvas.getContext('2d');
-
-let dots = []; // Array to store dot objects
-const dotRadius = 1.5; // Radius of each dot
-const dotSpacing = 40; // Spacing between dots
-const maxDistance = 150; // Max distance for dots to connect to cursor
-const maxOpacity = 0.6; // Max opacity for dots
-
-// Function to resize canvas to fill the window
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  initDots(); // Reinitialize dots on resize
-}
-
-// Function to initialize dots
-function initDots() {
-  dots = []; // Clear existing dots
-  for (let x = 0; x < canvas.width; x += dotSpacing) {
-    for (let y = 0; y < canvas.height; y += dotSpacing) {
-      dots.push({
-        x: x + (Math.random() - 0.5) * (dotSpacing / 2), // Add slight random offset
-        y: y + (Math.random() - 0.5) * (dotSpacing / 2),
-        opacity: 0, // Initial opacity
-        vx: (Math.random() - 0.5) * 0.1, // Small random velocity for subtle movement
-        vy: (Math.random() - 0.5) * 0.1,
-      });
-    }
-  }
-}
-
-// Mouse position tracking
-let mouse = { x: 0, y: 0 };
-window.addEventListener('mousemove', (e) => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
-
-// Animation loop
-function animateDots() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-
-  dots.forEach(dot => {
-    // Update dot position with subtle movement
-    dot.x += dot.vx;
-    dot.y += dot.vy;
-
-    // Bounce off edges
-    if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
-    if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
-
-    // Calculate distance to mouse
-    const dist = Math.sqrt(Math.pow(dot.x - mouse.x, 2) + Math.pow(dot.y - mouse.y, 2));
-
-    // Adjust opacity based on distance to mouse
-    if (dist < maxDistance) {
-      dot.opacity = maxOpacity * (1 - dist / maxDistance);
-    } else {
-      dot.opacity = 0; // Fade out if too far
-    }
-
-    // Draw dot
-    ctx.beginPath();
-    ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(99, 102, 241, ${dot.opacity})`; // Indigo color with dynamic opacity
-    ctx.fill();
-  });
-
-  requestAnimationFrame(animateDots); // Loop animation
-}
-
-// Event listeners
-window.addEventListener('resize', resizeCanvas);
-window.addEventListener('load', () => {
-  resizeCanvas(); // Initial resize and dot setup
-  animateDots(); // Start animation
-});
-// Scroll to #moreprojects manually with offset
+// --- Scroll to #moreprojects with offset ---
 const scrollBtn = document.getElementById("scrollButton");
 if (scrollBtn) {
   scrollBtn.addEventListener("click", function (e) {
@@ -199,11 +94,10 @@ if (scrollBtn) {
   });
 }
 
-
-// Correct scroll with sticky header offset
+// Correct scroll with header offset
 window.addEventListener('load', () => {
   setTimeout(() => {
-    document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
         const targetEl = document.querySelector(targetId);
@@ -219,20 +113,21 @@ window.addEventListener('load', () => {
   }, 300);
 });
 
-  document.querySelectorAll('.openModal').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('modal').classList.remove('hidden');
-    });
+// Modal logic (unchanged)
+document.querySelectorAll('.openModal').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('modal').classList.remove('hidden');
   });
+});
 
-  document.getElementById('closeModal').addEventListener('click', function() {
-    document.getElementById('modal').classList.add('hidden');
-  });
+document.getElementById('closeModal').addEventListener('click', function() {
+  document.getElementById('modal').classList.add('hidden');
+});
 
-  window.addEventListener('click', function(e) {
-    const modal = document.getElementById('modal');
-    if (e.target === modal) {
-      modal.classList.add('hidden');
-    }
-  });
+window.addEventListener('click', function(e) {
+  const modal = document.getElementById('modal');
+  if (e.target === modal) {
+    modal.classList.add('hidden');
+  }
+});
