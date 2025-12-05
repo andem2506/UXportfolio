@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Andem Sai | UX designer</title>
     <meta name="description" content="Andem Sai is a UX Designer with a passion for crafting elegant and intuitive digital experiences. View my portfolio of case studies in fintech, healthcare, and e-commerce.">
-    <meta name="keywords" content="UX Designer, UI Design, Portfolio, Case Studies, User Experience, Human-Computer Interaction, Fintech, Healthcare, E-commerce, Design Portfolio">
-    <link rel="canonical" href="https://yourdomain.com/">
+    <meta name="keywords" content="UX Designer, UI Design, Portfolio, Accessibility, WCAG 2.2, Section-508, Case Studies, User Experience, Human-Computer Interaction, Fintech, Healthcare, E-commerce, Design Portfolio">
+    <link rel="canonical" href="https://andem.in/">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,125 @@
           e.src = q + c._hjSettings.hjid + u;
           r.appendChild(e);
       })(window, document, 'https://static.hj.contentsquare.net/c/csq-', '.js', 6406799);
+      
+      tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-text-overlay': '#FFFFFF', // White text for overlay
+                        'secondary-text-overlay': '#E0E0E0', // Light gray for descriptions
+                        'background-main': '#F9F9F9', // Very light, almost white background
+                        'card-bg': '#FFFFFF', // Cards are effectively "image containers" now
+                        'accent-modern': '#007AFF', // Clean, vibrant blue (Apple Blue)
+                        'accent-hover': '#66B3FF', // Lighter blue for hover on white text
+                    }
+                }
+            }
+        }
   </script>
+  <style>
+        .project-card {
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, outline-color 0.2s ease-out;
+            border-radius: 6px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05); 
+            outline: 2px solid var(--tw-accent-modern, #007AFF);
+            outline-offset: -1px;
+        }
+
+        .project-card:hover {
+            --tw-accent-modern: #007AFF;
+        }
+
+        /* --- Styling for Image and Gradient with Overlay Text --- */
+        .image-area {
+            min-height: 330px; /* Minimum height for image and content */
+            height: 100%; 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-radius: 6px; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; 
+            padding: 20px; 
+        }
+
+        .image-area::before { /* Darken image and provide base for text contrast */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Gradient fades from dark (bottom) to lighter (top) */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1; 
+        }
+
+        /* Individual Background Images for Visual Variety (using abstract colors for placeholder) */
+        /* NOTE: Replace these placeholder URLs with actual project mockup images for the final site! */
+        .project-1-bg { background-image: url('img/PMR_Mob_Prototype.png/'); } /* Blue */
+        .project-2-bg { background-image: url('img/ridecar/ride1.png'); } /* Amber */
+        .project-3-bg { background-image: url('img/bambus_multidevice.jpg'); } /* Emerald */
+        .project-4-bg { background-image: url('img/cb1.png'); } /* Violet */
+        
+        /* Ensure all text and elements within image-area are above the gradient overlay */
+        .image-area > * {
+            position: relative;
+            z-index: 2; 
+        }
+
+        /* Adjust tag styling for overlay (white text on transparent background) */
+        .tag-overlay {
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+            color: #FFFFFF;
+        }
+
+        .link-overlay {
+            color: var(--tw-accent-hover, #66B3FF); /* Lighter accent for visibility */
+        }
+
+        .link-overlay:hover {
+            color: var(--tw-accent-modern, #007AFF); /* Darker on hover for contrast */
+        }
+           /* Custom styles for the hover overlay using Tailwind utilities */
+           .case-study-card {
+            /* Ensures the child overlay is positioned relative to the card */
+            position: relative;
+            /* Hides overflow so the content can slide in from below */
+            overflow: hidden; 
+            /* Ensures proper click area */
+            display: block;
+        }
+
+        /* The overlay element */
+        .overlay {
+            /* Initially hidden by translating it down by 100% of its own height */
+            transform: translateY(100%);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+            /* Ensures the content is always above the image */
+            z-index: 10;
+        }
+
+        /* When the parent (.group) is hovered, slide the overlay up and make it visible */
+        .case-study-card:hover .overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+  </style>
   </head>
 
 <!-- Google tag (gtag.js) -->
@@ -42,109 +160,153 @@
 
 
   <body class="bg-white text-gray-900 scroll-smooth font-sans h-full">
-    <div id="custom-cursor"></div>
-    <div id="cursor-follower"></div>
-    <canvas id="background-canvas"></canvas>
 
     <div id="header-placeholder" class="sticky top-0 bg-white/30 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200"></div>
 
 
-    <section class="min-h-screen px-32  2xl:mx-16 flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-16 text-center md:text-left">
-      <!-- Text Content -->
-      <div class="flex-1 lg:pl-24 space-y-6 flex flex-col justify-center">
-        <h1 class="text-5xl md:text-6xl font-heading font-extrabold leading-tight bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
-          Hi, I'm Sai!
-        </h1>
-        <h2 class="text-2xl md:text-xl font-heading font-extrabold leading-tight bg-red-400 text-transparent bg-clip-text">
-          UX Designer & Product thinker
-        </h2>
-        <p class="text-xl text-gray-700 max-w-xl mx-auto md:mx-0">
-          I build things, play chess and make things happen.
-          Studio founder, system thinker, watercolorist on weekends.
-        </p>
-        <a href="#work" class="self-center md:self-start w-max font-heading inline-block bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-small hover:bg-blue-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-          Scroll to View My Work ↓
-        </a>
-      </div>
+    <div class="max-w-5xl mx-auto mt-8">
+        
+      <!-- Refactored Introduction Section: Light Theme with new Accent Color -->
+      <section class="mb-20 p-8 bg-white shadow-xl rounded-xl">
+          <div class="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-10">
+              <!-- Avatar Placeholder with new Accent border -->
+              <img 
+                  src="img/AAAAAAA.jpeg" 
+                  alt="Sai Srivathsav Andem Avatar" 
+                  class="w-64 h-64 rounded-full object-cover shadow-lg border-4 flex-shrink-0"
+              />
+              
+              <!-- Text Content -->
+              <div>
+                  <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Sai Srivathsav Andem</h1>
+                  <h2 class="text-xl font-medium text-gray-600 mb-4">UX Designer & <span class="text-accent-modern">Product Strategy</span> Specialist</h2>
+                  
+                  <p class="text-gray-700 leading-relaxed text-base">
+                      With 9+ years of experience, I specialize in research-driven, <span class="font-semibold text-gray-900">WCAG 2.2 AA-compliant</span> digital products. My core expertise lies in <span class="font-semibold text-gray-900">Design Thinking</span>, managing projects from initial <span class="font-semibold">User Journey Mapping</span> and <span class="font-semibold">Usability Testing</span> to final <span class="font-semibold">Prototyping</span> and <span class="font-semibold">Visual Design</span>. I leverage <span class="font-semibold text-gray-900">Figma</span> and <span class="font-semibold">Agile Delivery</span> to translate complex <span class="font-semibold">Information Architecture (IA)</span> into measurable business performance.
+                  </p>
+                  <div class="mt-4 flex flex-wrap gap-4 text-sm font-medium text-gray-600">
+                      <!-- Use accent-modern for hover color -->
+                      <span><a href="https://www.linkedin.com/in/andem1" class="hover:text-accent-modern transition" target="_blank">🔗 LinkedIn</a></span>
+                  </div>
+              </div>
+          </div>
+      </section>
+    </div>
     
-      <!-- Image -->
-      <div class="flex-1 flex justify-center md:justify-end items-center" data-aos="zoom-in">
-        <img
-          src="img/Andem-profile-pic-black.gif"
-          alt="Portrait of Andem Sai"
-          class="max-w-xs md:max-w-sm w-full h-auto"
-        />
+    <main class="px-6 py-2 md:px-20 lg:px-40 space-y-2 md:space-y-2">
+      <section id="work" class="space-y-12">
+        <h2 class="text-xl md:text-xl text-primary-text tracking-tight mb-10 text-center underline">
+            Featured Case Studies
+        </h2>
+
+        <div class="font-sans p-2 sm:p-2">
+
+          <div class="max-w-7xl mx-auto">
+              <!-- Case Study Grid Container -->
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-4 gap-2">
+      
+                  <!-- Case Study 1: E-commerce Checkout Redesign -->
+                  <a href="PMR_Casestudy.html" class="group case-study-card rounded-md shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                      <div class="aspect-video w-full">
+                          <!-- Placeholder image - Replace with your project screenshot -->
+                          <img
+                              src="img/PMR_cover.png"
+                              alt="Valet parking app Ecosystem design"
+                              class="w-full h-full object-cover rounded-md"
+                          />
+                      </div>
+                      
+                      <!-- Hover Overlay -->
+                      <div class="overlay absolute inset-0 bg-blue-600/95 flex items-center justify-center p-6 rounded-md">
+                          <div class="text-center text-white">
+                              <h2 class="text-2xl font-bold mb-3">Valet Parking Ecosystem</h2>
+                              <p class="text-sm italic mb-4">UX Research & Interface Design</p>
+                              <p class="text-base font-light">PMR is a 3-sided valet parking system I designed to ease customer stress, 
+                                streamline organizer ops, and simplify check-ins for attendants. I led end-to-end UX design from 
+                                research to real-time & offline-ready tools. Resulting in a 93% task success rate and a 60% drop in parking complaints.</p>
+                              <span class="mt-4 inline-block bg-white text-blue-600 font-semibold py-2 px-4 rounded-full text-xs shadow-md">View Case Study →</span>
+                          </div>
+                      </div>
+                  </a>
+      
+                  <!-- Case Study 2: Healthcare Dashboard -->
+                  <a href="Ridecar_Casestudy.html" class="group case-study-card rounded-md shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                      <div class="aspect-video w-full">
+                          <!-- Placeholder image - Replace with your project screenshot -->
+                          <img
+                              src="img/111111111.png"
+                              alt="Screenshot of a complex medical data dashboard"
+                              class="w-full h-full object-cover rounded-md"
+                          />
+                      </div>
+                      
+                      <!-- Hover Overlay -->
+                      <div class="overlay absolute inset-0 bg-red-800/95 flex items-center justify-center p-6 rounded-md">
+                          <div class="text-center text-white">
+                              <h2 class="text-2xl font-bold mb-3">RideCar website and app design</h2>
+                              <p class="text-sm italic mb-4">Accessibility & UX Design</p>
+                              <p class="text-base font-light">Conducting Section 508  & WCAG compliance check for the website. Updating the information architecture of the website, 
+                                creating a new design guide following the updated branding. Low-fidelity and High 
+                                fidelity prototype for Mobile app and the website. Collaboration with the developer 
+                                to execute the website and publish online.</p>
+                              <span class="mt-4 inline-block bg-white text-red-800 font-semibold py-2 px-4 rounded-full text-xs shadow-md">View Case Study →</span>
+                          </div>
+                      </div>
+                  </a>
+      
+                  <!-- Case Study 3: Mobile Learning App -->
+                  <a href="bambus.html" class="group case-study-card rounded-md shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                      <div class="aspect-video w-full">
+                          <!-- Placeholder image - Replace with your project screenshot -->
+                          <img
+                              src="img/bambus_multidevice.jpg"
+                              alt="Screenshot of a mobile application interface"
+                              class="w-full h-full object-cover rounded-md"
+                          />
+                      </div>
+                      
+                      <!-- Hover Overlay -->
+                      <div class="overlay absolute inset-0 bg-emerald-700/95 flex items-center justify-center p-6 rounded-md">
+                          <div class="text-center text-white">
+                              <h2 class="text-2xl font-bold mb-3">E-commerce website design</h2>
+                              <p class="text-sm italic mb-4">Prototyping, A/B testing & storytelling</p>
+                              <p class="text-base font-light">Delivered and validated, user-centered e-commerce 
+                                prototype. Promoted ethical shopping through transparency and storytelling,
+                                 encouraging mindful consumer behavior.</p>
+                              <span class="mt-4 inline-block bg-white text-emerald-700 font-semibold py-2 px-4 rounded-full text-xs shadow-md">View Case Study →</span>
+                          </div>
+                      </div>
+                  </a>
+      
+                  <!-- Case Study 4: FinTech Onboarding -->
+                  <a href="concertBuddy.html" class="group case-study-card rounded-md shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                      <div class="aspect-video w-full">
+                          <!-- Placeholder image - Replace with your project screenshot -->
+                          <img
+                              src="img/cb1.png"
+                              alt="Screenshot of a financial technology application onboarding screen"
+                              class="w-full h-full object-cover rounded-md"
+                          />
+                      </div>
+                      
+                      <!-- Hover Overlay -->
+                      <div class="overlay absolute inset-0 bg-violet-800/95 flex items-center justify-center p-6 rounded-md">
+                          <div class="text-center text-white">
+                              <h2 class="text-2xl font-bold mb-3">Concert Buddy mobile application</h2>
+                              <p class="text-sm italic mb-4">UX Research, Design & Testing</p>
+                              <p class="text-base font-light">Concert companion application designed to enhance the concert going 
+                                experience. Our proposed platform empowers users to track and review concert details, enhancing 
+                                their experience before, during, and after the live music event.</p>
+                              <span class="mt-4 inline-block bg-white text-violet-800 font-semibold py-2 px-4 rounded-full text-xs shadow-md">View Case Study →</span>
+                          </div>
+                      </div>
+                  </a>
+      
+              </div>
+          </div>
+      
       </div>
     </section>
-    
-    <main class="px-6 py-12 md:px-20 lg:px-40 space-y-24 md:space-y-32">
-      <section id="work" class="space-y-12" data-aos="fade-up">
-        <h2 class="text-4xl md:text-5xl font-heading font-bold text-center text-gray-800">Featured Case Studies</h2>
-        <div>
-          <section class="case-study bg-white rounded-2xl shadow-xl transform transition-all duration-300 ease-in-out hover:shadow-indigo-500/30 hover:shadow-2xl hover:-translate-y-3 hover:scale-[1.03] border border-gray-200 hover:border-indigo-500 " data-aos="fade-up">
-          <div class="case-study-image">
-            <img src="img/PMR_admindashboard.png" alt="Valet parking app Ecosystem design">
-          </div>  
-          <div class="case-study-content">
-              <h3 class="text-2xl font-semibold">Designing a Valet Parking Ecosystem for Real-Time Coordination at Scale</h3>
-              <p class="project-summary">PMR is a 3-sided valet parking system I designed to ease customer stress, 
-                streamline organizer ops, and simplify check-ins for attendants. I led end-to-end UX design from 
-                research to real-time & offline-ready tools. Resulting in a 93% task success rate and a 60% drop in parking complaints.</p>
-              <a href="PMR_Casestudy.html" class="view-case-study inline-block mt-4 px-24 py-3 text-base font-semibold text-blue-600 bg-white rounded-full shadow-md hover:bg-white transition-all duration-200">View case study →</a>
-            </div>
-           
-          </section> 
-          <section class="case-study bg-white rounded-2xl shadow-xl transform transition-all duration-300 ease-in-out hover:shadow-indigo-500/30 hover:shadow-2xl hover:-translate-y-3 hover:scale-[1.03] border border-gray-200 hover:border-indigo-500 ">
-            <div class="case-study-image">
-              <img src="img/111111111.png" alt="RideCar website and app design">
-            </div>  
-            <div class="case-study-content">
-              <h3 class="text-2xl font-semibold">Elevate your travel experiences by effortlessly booking skilled chauffeurs</h3>
-              <p class="project-summary">Updating the information architecture of the website, 
-                creating a new design guide following the updated branding. Low-fidelity and High 
-                fidelity prototype for Mobile app and the website. Collaboration with the developer 
-                to execute the website and publish online. Conducting Section 508  & WCAG compliance check for the website.</p>
-
-              <a href="Ridecar_Casestudy.html" class="view-case-study inline-block mt-4 px-24 py-3 text-base font-semibold text-blue-600 bg-white rounded-full shadow-md hover:bg-white transition-all duration-200">View case study →</a>
-            </div>
-            
-          </section> 
-          <section class="case-study bg-white rounded-2xl shadow-xl transform transition-all duration-300 ease-in-out hover:shadow-indigo-500/30 hover:shadow-2xl hover:-translate-y-3 hover:scale-[1.03] border border-gray-200 hover:border-indigo-500">
-            <div class="case-study-image">
-              <img src="img/bambus_multidevice.jpg" alt="E-commerce website design">
-            </div>  
-            <div class="case-study-content">
-              <h3 class="text-2xl font-semibold">Designing delightful 
-                e-commerce experience highlighting the stories of local artisans.</h3>
-              <p class="project-summary">Delivered and validated, user-centered e-commerce 
-                prototype. Promoted ethical shopping through transparency and storytelling,
-                 encouraging mindful consumer behavior.</p>
-
-              <a href="bambus.html" class="view-case-study inline-block mt-4 px-24 py-3 text-base font-semibold text-blue-600 bg-white rounded-full shadow-md hover:bg-white transition-all duration-200">View case study →</a>
-            </div>
-          </section>  
-          
-          <section class="case-study bg-white rounded-2xl shadow-xl transform transition-all duration-300 ease-in-out hover:shadow-indigo-500/30 hover:shadow-2xl hover:-translate-y-3 hover:scale-[1.03] border border-gray-200 hover:border-indigo-500">
-            <div class="case-study-image">
-              <img src="img/cb1.png" alt="Concert Buddy mobile application">
-            </div>  
-            <div class="case-study-content">
-              <h3 class="text-2xl font-semibold">Designing a mobile app to enhance the Concert Going Experience</h3>
-              <p class="project-summary">Concert companion application designed to enhance the concert going 
-                experience. Our proposed platform empowers users to track and review concert details, enhancing 
-                their experience before, during, and after the live music event.</p>
-
-              <a href="concertBuddy.html" class="view-case-study inline-block mt-4 px-24 py-3 text-base font-semibold text-blue-600 bg-white rounded-full shadow-md hover:bg-white transition-all duration-200">View case study →</a>
-            </div>
-          </section> 
-        
-        </div>
-        <div class="text-center">
-            <a href="#moreprojects" class="font-heading inline-block bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-small hover:bg-blue-700 hover:scale-105 transition-all transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-              See more Projects →
-            </a>
-        </div>
-      </section>
        <!-- New Expertise Section -->
     <section id="expertise" class="px-6 py-12 md:px-20 lg:px-40 space-y-12" data-aos="fade-up">
       <h2 class="text-4xl md:text-5xl font-heading font-bold text-center text-gray-800">My Expertise</h2>
