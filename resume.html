@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-     <!-- Favicon for light mode -->
-  <link id="favicon" rel="icon" href="img/faviconblk.png">
+     <!-- Favicon -->
+     <link id="favicon" rel="icon" href="img/faviconblk.png">
      <script>
         (function (c, s, q, u, a, r, e) {
             c.hj=c.hj||function(){(c.hj.q=c.hj.q||[]).push(arguments)};
@@ -21,6 +21,7 @@
             e.src = q + c._hjSettings.hjid + u;
             r.appendChild(e);
         })(window, document, 'https://static.hj.contentsquare.net/c/csq-', '.js', 6406799);
+
     </script>
 </head>
 
@@ -51,17 +52,27 @@
         </div>
       </header>
 
+    <div id="custom-cursor"></div>
+    <div id="cursor-follower"></div>
+    <canvas id="background-canvas"></canvas>
     <div class="container mx-auto py-8 max-w-4xl">
         <div class="py-10">
             <h1 class="text-3xl font-bold heading-font text-gray-900">Sai Srivathsav Andem</h1>
-            <p class="text-lg text-gray-600 mb-4 text-red-400"> UX Designer </p>
-            <div class="contact-info text-right">
-                <p class="text-gray-700 mb-1">Email: andem2506@gmail.com</p>
-                <p class="text-gray-700 mb-1">Phone: +1 3123582869</p>
-                <p class="text-gray-700 mb-1">Website: <a href="https://andem.in" target="_blank" class="text-blue-600 hover:underline">andem.in</a></p>
-                <p class="text-gray-700"><a href="https://linkedin.com/in/andem1" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a></p>
-            </div>
-        </div>
+            <p class="text-lg text-gray-600 mb-4 flex items-center justify-between">
+                <span class="text-red-400">UX Designer</span>
+              
+                <a 
+                  href="https://linkedin.com/in/andem1" 
+                  target="_blank" 
+                  class="px-3 py-1 text-white text-sm rounded-lg transition"
+                  style="background-color: #0077B5;"
+                  onmouseover="this.style.backgroundColor='#006097';"
+                  onmouseout="this.style.backgroundColor='#0077B5';"
+                >
+                  LinkedIn
+                </a>
+              </p>
+                      </div>
 
         <section class="section mb-8 pb-6 border-b border-gray-200">
             <h2 class="section-title text-2xl font-semibold text-gray-800 mb-6">Summary</h2>
@@ -209,12 +220,6 @@
                 </div>
             </section>
     </div>
-
-    
-      
-
-
-
 
     <footer class="bg-gray-900 text-white py-8 md:py-12">
         <div class="container mx-auto px-6 md:px-20 lg:px-40 text-center">
