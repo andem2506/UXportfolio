@@ -7,6 +7,22 @@ AOS.init({
 
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
+const favicon = document.getElementById('favicon');
+
+  function updateFavicon() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      favicon.href = 'img/faviconwhte.png';
+    } else {
+      favicon.href = 'img/faviconblk.png';
+    }
+  }
+
+  // Initial load
+  updateFavicon();
+
+  // Listen for changes in theme
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+
 // --- REMOVE CUSTOM CURSOR ---
 // (All custom cursor DOM, GSAP, and event listeners removed)
 
