@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midtown Comics Usability Study | Portfolio Project</title>
+    <meta name="description" content="A comprehensive usability evaluation of the Midtown Comics website, focusing on e-commerce navigation and user experience.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --primary: #c41e3a; /* Midtown Comics Red */
+        --secondary: #1a1a1a;
+        --accent: #f4f4f4;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #333;
+        scroll-behavior: smooth;
+      }
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+      }
+      .bg-primary { background-color: var(--primary); }
+      .text-primary { color: var(--primary); }
+      .hero-gradient {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1588497859490-85d1c17db96d?auto=format&fit=crop&q=80&w=2000');
+        background-size: cover;
+        background-position: center;
+      }
+      .stat-card {
+        border-top: 4px solid var(--primary);
+      }
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        border-bottom: 1px solid #e5e7eb;
+      }
+    </style>
+  </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2C8G747MPL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2C8G747MPL');
+</script>
+ 
+
+  <body class="bg-white">
+    <div id="header-placeholder" class="sticky top-0 bg-white/30 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient h-[60vh] flex items-center justify-center text-center text-white">
+      <div class="container mx-auto px-6" data-aos="fade-up">
+        <span class="uppercase tracking-widest text-sm font-semibold mb-4 block text-red-500">Usability Evaluation</span>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Midtown Comics Website</h1>
+        <p class="max-w-2xl mx-auto text-lg text-gray-200">
+          Evaluating the digital storefront of NYC's iconic comic book shop to identify friction in the comic book discovery and purchasing process.
+        </p>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-20 bg-white">
+      <div class="container mx-auto px-6 md:px-20 lg:px-40">
+        <div class="grid md:grid-cols-3 gap-12">
+          <div class="md:col-span-2" data-aos="fade-right">
+            <h2 class="text-3xl font-bold mb-6">The Challenge</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              Midtown Comics is a staple for NYC fans, but their online experience struggled with modern e-commerce expectations. Our team, the "UX Wizards," conducted a formal usability study to assess how effectively fans can browse, search for back issues, and manage pre-orders.
+            </p>
+            <h3 class="text-xl font-semibold mb-4">Research Goals</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-600">
+              <li>Evaluate the ease of finding specific comic book genres and characters.</li>
+              <li>Assess the efficiency of the "Site-to-Store" checkout process.</li>
+              <li>Identify major pain points in navigation and information architecture.</li>
+              <li>Measure overall user satisfaction using industry-standard metrics.</li>
+            </ul>
+          </div>
+          <div class="bg-accent p-8 rounded-lg" data-aos="fade-left">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-gray-500">Project Details</h3>
+            <div class="space-y-4">
+              <div>
+                <p class="text-xs font-bold text-gray-400">ROLE</p>
+                <p class="text-sm font-medium">Lead UX Researcher</p>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-gray-400">TIMELINE</p>
+                <p class="text-sm font-medium">May 2023 (3 Weeks)</p>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-gray-400">TOOLS</p>
+                <p class="text-sm font-medium">Zoom, Google Forms, Sheets</p>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-gray-400">TEAM</p>
+                <p class="text-sm font-medium">Sai, Rishika, Purva, Natasha</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="methodology" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6 md:px-20 lg:px-40">
+        <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Methodology</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+          <div class="bg-white p-8 rounded shadow-sm" data-aos="zoom-in">
+            <div class="text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Participant Criteria</h3>
+            <p class="text-sm text-gray-600">
+              Recruited 5 participants matching the target audience: Adults (18+) with basic comic book knowledge and online shopping experience. Excluded professional collectors and Midtown Comics employees.
+            </p>
+          </div>
+          <div class="bg-white p-8 rounded shadow-sm" data-aos="zoom-in" data-aos-delay="100">
+            <div class="text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Remote Testing</h3>
+            <p class="text-sm text-gray-600">
+              Moderated sessions conducted via Zoom with screen sharing. We utilized Observer and Evaluator sheets to capture behavioral data, verbalizations, and error rates in real-time.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-10 rounded shadow-sm" data-aos="fade-up">
+          <h3 class="text-xl font-bold mb-6 border-b pb-4">Test Scenarios</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="border-l-2 border-primary pl-4">
+              <span class="text-xs font-bold text-gray-400">TASK 1</span>
+              <p class="text-sm font-medium">Locate a specific comic series (e.g., "Spider-Man") and filter by release date.</p>
+            </div>
+            <div class="border-l-2 border-primary pl-4">
+              <span class="text-xs font-bold text-gray-400">TASK 2</span>
+              <p class="text-sm font-medium">Add a "Back Issue" to the cart and apply a site-to-store shipping option.</p>
+            </div>
+            <div class="border-l-2 border-primary pl-4">
+              <span class="text-xs font-bold text-gray-400">TASK 3</span>
+              <p class="text-sm font-medium">Navigate to the "Weekly Releases" page and find pre-order availability.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results/Metrics Section -->
+    <section class="py-20 bg-primary text-white">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-16">High-Level Metrics</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div data-aos="fade-up">
+            <p class="text-5xl font-bold mb-2">80%</p>
+            <p class="text-sm uppercase tracking-widest font-medium text-red-200">Task Completion</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-5xl font-bold mb-2">4.2</p>
+            <p class="text-sm uppercase tracking-widest font-medium text-red-200">Ease of Use (1-5)</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <p class="text-5xl font-bold mb-2">72</p>
+            <p class="text-sm uppercase tracking-widest font-medium text-red-200">Avg. SUS Score</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="300">
+            <p class="text-5xl font-bold mb-2">2.5m</p>
+            <p class="text-sm uppercase tracking-widest font-medium text-red-200">Avg. Time on Task</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Findings Section -->
+    <section id="findings" class="py-20 bg-white">
+      <div class="container mx-auto px-6 md:px-20 lg:px-40">
+        <h2 class="text-3xl font-bold mb-12" data-aos="fade-right">Key Findings</h2>
+        
+        <div class="space-y-12">
+          <!-- Finding 1 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start" data-aos="fade-up">
+            <div class="bg-accent h-16 w-16 rounded-full flex items-center justify-center shrink-0 text-primary font-bold text-xl">01</div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Navigational Hierarchy Confusion</h3>
+              <p class="text-gray-600">Users frequently struggled to distinguish between "Back Issues," "New Releases," and "Pre-orders" due to overlapping menu items and inconsistent labeling in the sidebar.</p>
+              <div class="mt-4 p-4 bg-gray-50 border-l-4 border-primary italic text-sm text-gray-500">
+                "I wasn't sure if a comic from last month was considered 'New' or a 'Back Issue'—the menu labels didn't help me decide where to click." — Participant 2
+              </div>
+            </div>
+          </div>
+
+          <!-- Finding 2 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start" data-aos="fade-up">
+            <div class="bg-accent h-16 w-16 rounded-full flex items-center justify-center shrink-0 text-primary font-bold text-xl">02</div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Filtering Friction</h3>
+              <p class="text-gray-600">While the search function was reliable, the filtering system for specific publishers (DC, Marvel, Indie) was buried within a secondary dropdown, leading to 3/5 users "hunting" for the filter button.</p>
+            </div>
+          </div>
+
+          <!-- Finding 3 -->
+          <div class="flex flex-col md:flex-row gap-8 items-start" data-aos="fade-up">
+            <div class="bg-accent h-16 w-16 rounded-full flex items-center justify-center shrink-0 text-primary font-bold text-xl">03</div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Checkout Logic (Site-to-Store)</h3>
+              <p class="text-gray-600">The option for in-store pickup was highly valued but hidden behind several clicks. Users expected to see "Pickup" options earlier in the cart summary rather than deep in the shipping phase.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section id="recommendations" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6 md:px-20 lg:px-40">
+        <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">Actionable Recommendations</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="stat-card bg-white p-8 rounded shadow-sm" data-aos="flip-up">
+            <h3 class="font-bold text-lg mb-4">1. Simplify Global Navigation</h3>
+            <p class="text-sm text-gray-600">Consolidate redundant categories. Implement a "Shop by Format" (Comics, Graphic Novels, Collectibles) vs. "Shop by Status" (New, Pre-order, Back-issues) split to reduce cognitive load.</p>
+          </div>
+          <div class="stat-card bg-white p-8 rounded shadow-sm" data-aos="flip-up" data-aos-delay="100">
+            <h3 class="font-bold text-lg mb-4">2. Visual Filter Indicators</h3>
+            <p class="text-sm text-gray-600">Move primary filters (Publisher, Genre) to a persistent left-hand sidebar on all listing pages to allow for rapid narrowing of results.</p>
+          </div>
+          <div class="stat-card bg-white p-8 rounded shadow-sm" data-aos="flip-up" data-aos-delay="200">
+            <h3 class="font-bold text-lg mb-4">3. Streamline Pickup Options</h3>
+            <p class="text-sm text-gray-600">Introduce a "Click & Collect" toggle in the mini-cart. This transparency reduces checkout abandonment and caters to local NYC customers.</p>
+          </div>
+          <div class="stat-card bg-white p-8 rounded shadow-sm" data-aos="flip-up" data-aos-delay="300">
+            <h3 class="font-bold text-lg mb-4">4. Accessibility Enhancements</h3>
+            <p class="text-sm text-gray-600">Increase color contrast for active states and improve screen reader support for the dynamic "Weekly Release" calendar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="py-20 bg-white border-t">
+      <div class="container mx-auto px-6 md:px-20 lg:px-40">
+        <h2 class="text-3xl font-bold mb-6">Reflection & Takeaways</h2>
+        <div class="prose max-w-none text-gray-600">
+          <p class="mb-4">
+            Conducting this study reinforced the importance of <strong>qualitative observation over quantitative data alone</strong>. While the SUS score of 72 suggested a "good" experience, the struggle users faced with navigation (even if they eventually succeeded) indicated significant latent frustration.
+          </p>
+          <p>
+            If given more time, I would expand the testing to mobile devices, as many comic fans browse while in-store. This study served as a baseline for a future iterative design phase.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+      <div class="container mx-auto px-6 text-center">
+        <p class="text-gray-500 mb-6">Usability Evaluation Methods course.</p>
+        <div class="flex justify-center space-x-6 text-sm">
+          <a href="#" class="hover:text-primary transition">Back to Top</a>
+          <a href="#" class="hover:text-primary transition">Next Project</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="script.js"></script>
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+  </script>
+  </body>
+</html>
