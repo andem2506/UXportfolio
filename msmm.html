@@ -61,6 +61,52 @@
         font-weight: 600;
         text-transform: uppercase;
       }
+
+      /* Slider CSS Fixes */
+      .slider-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1.5rem;
+      }
+      .slider-wrapper {
+        display: flex;
+        transition: transform 0.5s ease-out;
+      }
+      .slide {
+        min-width: 100%;
+        flex-shrink: 0;
+      }
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.2s;
+        border: 1px solid #e2e8f0;
+      }
+      .dot {
+        height: 8px;
+        width: 8px;
+        margin: 0 4px;
+        background-color: #cbd5e1;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .dot.active {
+        background-color: var(--primary);
+        width: 24px;
+        border-radius: 4px;
+      }
     </style>
   </head>
   <!-- Google tag (gtag.js) -->
@@ -137,6 +183,92 @@
       </div>
     </section>
 
+    <!-- Simplified Design Process Timeline -->
+    <section id="timeline" class=" py-10 bg-white">
+      <div class="container mx-auto px-6 md:px-20 lg:px-40">
+          <div class="text-center mb-16" data-aos="fade-up">
+              <h2 class="text-3xl font-bold mb-4">The Design Process</h2>
+              <div class="accent-line mx-auto"></div>
+              <p class="text-gray-500">A systematic 7-week approach to solving organizational complexity.</p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+              <!-- Discovery -->
+              <div class="timeline-stage pl-6 border-l-2 border-primary/20 relative" data-aos="fade-up">
+                  <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
+                  <h4 class="text-primary text-xs uppercase tracking-widest font-bold mb-2">Weeks 1-2</h4>
+                  <h3 class="text-lg font-bold mb-3">Discovery & Research</h3>
+                  <ul class="text-sm text-gray-600 space-y-2">
+                      <li>Documentation & Competitive Analysis</li>
+                      <li>User Interviews & Finding Consolidation</li>
+                      <li>User Archetype Development</li>
+                  </ul>
+              </div>
+              <!-- Definition -->
+              <div class="timeline-stage pl-6 border-l-2 border-primary/20 relative" data-aos="fade-up" data-aos-delay="100">
+                  <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
+                  <h4 class="text-primary text-xs uppercase tracking-widest font-bold mb-2">Week 3</h4>
+                  <h3 class="text-lg font-bold mb-3">Definition & Ideation</h3>
+                  <ul class="text-sm text-gray-600 space-y-2">
+                      <li>Requirement Identification</li>
+                      <li>Problem Area Mapping</li>
+                      <li>Brainstorming & Solution Ideation</li>
+                  </ul>
+              </div>
+              <!-- Design -->
+              <div class="timeline-stage pl-6 border-l-2 border-primary/20 relative" data-aos="fade-up" data-aos-delay="200">
+                  <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
+                  <h4 class="text-primary text-xs uppercase tracking-widest font-bold mb-2">Weeks 4-5</h4>
+                  <h3 class="text-lg font-bold mb-3">Design & Prototyping</h3>
+                  <ul class="text-sm text-gray-600 space-y-2">
+                      <li>Information Architecture (IA)</li>
+                      <li>Lo-Fi to Hi-Fi Wireframing</li>
+                      <li>Interactive Prototyping (Wix)</li>
+                  </ul>
+              </div>
+              <!-- Delivery -->
+              <div class="timeline-stage pl-6 border-l-2 border-primary/20 relative" data-aos="fade-up" data-aos-delay="300">
+                  <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
+                  <h4 class="text-primary text-xs uppercase tracking-widest font-bold mb-2">Weeks 6-7</h4>
+                  <h3 class="text-lg font-bold mb-3">Testing & Delivery</h3>
+                  <ul class="text-sm text-gray-600 space-y-2">
+                      <li>Live Usability Testing</li>
+                      <li>Analysis & Iteration</li>
+                      <li>Comparison Metrics & Presentation</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- resultsImpact -->
+<section id="impact" class="py-8 bg-white">
+  <div class="container mx-auto px-6 md:px-20 lg:px-40" >
+  <div class="text-center " data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-4">Impact & Results</h2>
+    <p class="text-gray-500">Transforming the "Warriors" experience.</p>
+  </div>
+  
+  <div class="grid md:grid-cols-4 gap-8">
+    <div class="p-8 bg-light-bg rounded-xl text-center" data-aos="zoom-in">
+      <h4 class="text-4xl font-bold text-primary mb-2">38</h4>
+      <p class="text-xs text-gray-500 font-bold uppercase">New leads</p>
+    </div>
+    <div class="p-8 bg-light-bg rounded-xl text-center" data-aos="zoom-in">
+      <h4 class="text-4xl font-bold text-primary mb-2">90%</h4>
+      <p class="text-xs text-gray-500 font-bold uppercase">Communication Consolidation</p>
+    </div>
+    <div class="p-8 bg-light-bg rounded-xl text-center" data-aos=\"zoom-in\" data-aos-delay=\"100\">
+      <h4 class="text-4xl font-bold text-primary mb-2">03</h4>
+      <p class="text-xs text-gray-500 font-bold uppercase">New Automated Workflows</p>
+    </div>
+    <div class="p-8 bg-light-bg rounded-xl text-center" data-aos=\"zoom-in\" data-aos-delay=\"200\">
+      <h4 class="text-4xl font-bold text-primary mb-2">1:1</h4>
+      <p class="text-xs text-gray-500 font-bold uppercase">Direct Support Connections</p>
+    </div>
+  </div>
+</div>
+</section>
     <!-- Deep Dive into the Process -->
     <section id="process" class="py-8 bg-light-bg">
       <div class="container mx-auto px-6 md:px-20 lg:px-40">
@@ -157,19 +289,21 @@
               </div>
             </div>
             <div class="grid grid-cols-2 gap-4">
-                <div class="h-40 bg-gray-200 rounded-lg overflow-hidden">
+                <div class="h-40 bg-gray-200 rounded-lg overflow-hidden border">
                   <img 
-                    src="img/em1.png" 
+                    src="em1.png" 
                     alt="Empathy Map" 
                     class="w-full h-full object-cover"
+                    onerror="this.src='https://via.placeholder.com/400x300?text=Empathy+Map'"
                   />
                 </div>
               
-                <div class="h-40 bg-gray-200 rounded-lg overflow-hidden">
+                <div class="h-40 bg-gray-200 rounded-lg overflow-hidden border">
                   <img 
-                    src="img/am.png" 
+                    src="am.png" 
                     alt="Affinity Diagram" 
                     class="w-full h-full object-cover"
+                    onerror="this.src='https://via.placeholder.com/400x300?text=Affinity+Diagram'"
                   />
                 </div>
             </div>
@@ -178,19 +312,21 @@
           <!-- Step 2 -->
           <div class="grid lg:grid-cols-2 gap-12 items-center" data-aos="fade-up">
             <div class="grid grid-cols-2 gap-4">
-                <div class="h-40 bg-gray-200 rounded-lg overflow-hidden">
+                <div class="h-40 bg-gray-200 rounded-lg overflow-hidden border">
                   <img 
-                    src="img/ms_form1.png" 
+                    src="ms_form1.png" 
                     alt="family form" 
                     class="w-full h-full object-cover"
+                    onerror="this.src='https://via.placeholder.com/400x300?text=Family+Form'"
                   />
                 </div>
               
-                <div class="h-40 bg-gray-200 rounded-lg overflow-hidden">
+                <div class="h-40 bg-gray-200 rounded-lg overflow-hidden border">
                   <img 
-                    src="img/map.png" 
+                    src="map.png" 
                     alt="Photographer map" 
                     class="w-full h-full object-cover"
+                    onerror="this.src='https://via.placeholder.com/400x300?text=Map+Portal'"
                   />
                 </div>
             </div>
@@ -236,32 +372,118 @@
         </div>
       </div>
     </section>
+<!-- One Year Analytics (New Section) -->
+<section id="analytics" class="py-8 bg-white">
+  <div class="container mx-auto px-6 md:px-20 lg:px-40">
+    <div class="text-center mb-8" data-aos="fade-up">
+        <div class="detail-tag mb-4">Performance Report</div>
+        <h2 class="text-3xl font-bold mb-4">1-Year Analytics & Insights</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">Evaluating the platform's success after a full year of live operation through real user data.</p>
+    </div>
 
-    <!-- Results and Impact -->
-    <section id="impact" class="py-8 bg-white">
+    <div class="bg-light-bg p-6 rounded-3xl border border-gray-200" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-8">Engagement by User Type</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div>
+                <p class="text-primary font-bold text-3xl mb-1">4m 20s</p>
+                <p class="text-xs font-bold uppercase text-gray-500">Photographers</p>
+                <p class="text-[10px] text-gray-400 mt-1">Signup Completion Time</p>
+            </div>
+            <div>
+                <p class="text-primary font-bold text-3xl mb-1">2m 58s</p>
+                <p class="text-xs font-bold uppercase text-gray-500">Warrior Families</p>
+                <p class="text-[10px] text-gray-400 mt-1">Application Engagement</p>
+            </div>
+            <div>
+                <p class="text-primary font-bold text-3xl mb-1">2m 15s</p>
+                <p class="text-xs font-bold uppercase text-gray-500">Nominators</p>
+                <p class="text-[10px] text-gray-400 mt-1">Submission Efficiency</p>
+            </div>
+            <div>
+                <p class="text-primary font-bold text-3xl mb-1">2.1</p>
+                <p class="text-xs font-bold uppercase text-gray-500">Pages/Session</p>
+                <p class="text-[10px] text-gray-400 mt-1">Navigation Depth</p>
+            </div>
+        </div>
+        <div class="mt-10 p-6 bg-white rounded-xl border border-dashed border-gray-300">
+            <p class="text-sm text-gray-600 italic">
+                <strong>Navigation Flow Insight:</strong> 41% of users enter via the Homepage, with nearly 40% immediately self-identifying and moving into either the Family or Photographer funnels, proving the efficacy of the "First Three Steps" design strategy.
+            </p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Design Artifacts Slider -->
+<section class="bg-light-bg overflow-hidden">
+  <div class="container mx-auto px-6 md:px-20 lg:px-40">
+    <div class="slider-container shadow-2xl bg-white p-4" data-aos="fade-up">
+      <button class="slider-btn left-4" onclick="moveSlide(-1)">
+        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+      <button class="slider-btn right-4" onclick="moveSlide(1)">
+        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+      
+      <div class="slider-wrapper" id="slider">
+        <div class="slide bg-gray-50 flex flex-col items-center">
+          <img src="img/msmm_21.png" alt="Empathy Map Detail" class="w-full h-96 object-contain" onerror="this.src='https://via.placeholder.com/1200x600?text=Empathy+Map+Research'"/>
+          <div class="p-6 text-center">
+            <p class="font-bold text-gray-800">Empathy Mapping</p>
+            <p class="text-sm text-gray-500">Uncovering the emotional state of Warrior Families to design a stress-free intake form.</p>
+          </div>
+        </div>
+        <div class="slide bg-gray-50 flex flex-col items-center">
+          <img src="img/msmm_22.png" alt="Portal Interface" class="w-full h-96 object-contain" onerror="this.src='https://via.placeholder.com/1200x600?text=Portal+Interface'"/>
+          <div class="p-6 text-center">
+            <p class="font-bold text-gray-800">The Warrior Intake Portal</p>
+            <p class="text-sm text-gray-500">Simplified UI with high visual hierarchy to prioritize speed of application.</p>
+          </div>
+        </div>
+        <div class="slide bg-gray-50 flex flex-col items-center">
+          <img src="img/msmm_23.png" alt="Geographic Matchmaking" class="w-full h-96 object-contain" onerror="this.src='https://via.placeholder.com/1200x600?text=Matchmaking+Logic'"/>
+          <div class="p-6 text-center">
+            <p class="font-bold text-gray-800">Geographic Matchmaking</p>
+            <p class="text-sm text-gray-500">Integrating mapping logic to connect regional photographers with families instantly.</p>
+          </div>
+        </div>
+        <div class="slide bg-gray-50 flex flex-col items-center">
+          <img src="img/msmm_24.png" alt="Geographic Matchmaking" class="w-full h-96 object-contain" onerror="this.src='https://via.placeholder.com/1200x600?text=Matchmaking+Logic'"/>
+          <div class="p-6 text-center">
+            <p class="font-bold text-gray-800">Geographic Matchmaking</p>
+            <p class="text-sm text-gray-500">Integrating mapping logic to connect regional photographers with families instantly.</p>
+          </div>
+        </div>
+        <div class="slide bg-gray-50 flex flex-col items-center">
+          <img src="img/msmm_25.png" alt="Geographic Matchmaking" class="w-full h-96 object-contain" onerror="this.src='https://via.placeholder.com/1200x600?text=Matchmaking+Logic'"/>
+          <div class="p-6 text-center">
+            <p class="font-bold text-gray-800">Geographic Matchmaking</p>
+            <p class="text-sm text-gray-500">Integrating mapping logic to connect regional photographers with families instantly.</p>
+          </div>
+        </div>
+        <div class="slide bg-gray-50 flex flex-col items-center">
+          <img src="img/msmm_26.png" alt="Geographic Matchmaking" class="w-full h-96 object-contain" onerror="this.src='https://via.placeholder.com/1200x600?text=Matchmaking+Logic'"/>
+          <div class="p-6 text-center">
+            <p class="font-bold text-gray-800">Geographic Matchmaking</p>
+            <p class="text-sm text-gray-500">Integrating mapping logic to connect regional photographers with families instantly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-6" id="dots-container">
+      <span class="dot active" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+  </div>
+</section>
+
+    <!-- Reflection -->
+    <section id="reflection" class="py-8 bg-white">
       <div class="container mx-auto px-6 md:px-20 lg:px-40">
-        <div class="text-center mb-8" data-aos="fade-up">
-          <h2 class="text-3xl font-bold mb-4">Impact & Results</h2>
-          <p class="text-gray-500">Transforming the "Warriors" experience.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 bg-light-bg rounded-xl text-center" data-aos="zoom-in">
-            <h4 class="text-4xl font-bold text-primary mb-2">90%</h4>
-            <p class="text-xs text-gray-500 font-bold uppercase">Communication Consolidation</p>
-          </div>
-          <div class="p-8 bg-light-bg rounded-xl text-center" data-aos="zoom-in" data-aos-delay="100">
-            <h4 class="text-4xl font-bold text-primary mb-2">03</h4>
-            <p class="text-xs text-gray-500 font-bold uppercase">New Automated Workflows</p>
-          </div>
-          <div class="p-8 bg-light-bg rounded-xl text-center" data-aos="zoom-in" data-aos-delay="200">
-            <h4 class="text-4xl font-bold text-primary mb-2">1:1</h4>
-            <p class="text-xs text-gray-500 font-bold uppercase">Direct Support Connections</p>
-          </div>
-        </div>
-
-        <div class="mt-10 bg-dark text-white rounded-3xl" data-aos="fade-up">
-          <h3 class="text-xl font-bold">Project Reflection</h3>
+        <div class="mt-4 bg-dark text-white p-12 rounded-3xl" data-aos="fade-up">
+          <div class="detail-tag mb-4 text-center inline-block">Project Reflection</div>
           <p class="text-sm text-gray-400 leading-relaxed mb-6">
             Our major roadblock was the lack of user information and the struggle to understand the users and their needs with limited data. The "Warrior Family" interview conducted was informative, but the data was statistically insignificant due to constraints. 
           </p>
@@ -273,10 +495,10 @@
     </section>
 
     <!-- Footer -->
-      <footer class="bg-gray-900 text-white py-8 md:py-12">
+    <footer class="bg-gray-900 text-white py-8 md:py-12">
       <div class="container mx-auto px-6 md:px-20 lg:px-40 text-center">
         <p class="text-md text-gray-400">
-          &copy; <?php echo date("Y"); ?> Andem Sai. All rights reserved.</a>
+          &copy; <span id="year"></span> Andem Sai. All rights reserved.
         </p>
         <div class="mt-4 flex justify-center space-x-6">
             <a href="https://www.linkedin.com/in/andem1/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors duration-200">LinkedIn</a>
@@ -285,28 +507,52 @@
       </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init({
         duration: 800,
         once: true,
       });
-    </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="script.js"></script>
-  <script>
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      });
-  </script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({ duration: 1000, once: true });
+      // Update Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Slider Script Section
+      let currentSlideIdx = 0;
+      const slider = document.getElementById('slider');
+      const dots = document.querySelectorAll('.dot');
+      const totalSlides = 3;
+
+      function updateSlider() {
+        if (!slider) return;
+        slider.style.transform = `translateX(-${currentSlideIdx * 100}%)`;
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentSlideIdx);
+        });
+      }
+
+      window.moveSlide = function(direction) {
+        currentSlideIdx = (currentSlideIdx + direction + totalSlides) % totalSlides;
+        updateSlider();
+      }
+
+      window.currentSlide = function(idx) {
+        currentSlideIdx = idx;
+        updateSlider();
+      }
+
+      
+      // Auto-slide functionality
+      let sliderInterval = setInterval(() => moveSlide(1), 5000);
+      const sliderContainer = document.querySelector('.slider-container');
+      
+      if(sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(sliderInterval));
+        sliderContainer.addEventListener('mouseleave', () => {
+          sliderInterval = setInterval(() => moveSlide(1), 5000);
+        });
+      }
     </script>
   </body>
 </html>
