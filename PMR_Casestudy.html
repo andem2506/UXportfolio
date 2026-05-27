@@ -1,254 +1,749 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PMR: Scaling Real-Time Systems | Andem Sai</title>
-    
-    <script>
-        (function (c, s, q, u, a, r, e) {
-            c.hj=c.hj||function(){(c.hj.q=c.hj.q||[]).push(arguments)};
-            c._hjSettings = { hjid: a };
-            r = s.getElementsByTagName('head')[0];
-            e = s.createElement('script');
-            e.async = true;
-            e.src = q + c._hjSettings.hjid + u;
-            r.appendChild(e);
-        })(window, document, 'https://static.hj.contentsquare.net/c/csq-', '.js', 6406799);
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Andem | Park My Ride</title>
+  <meta name="description" content="Case study: collapsing three operator tools into one real-time valet OS. −42% ticket resolution, +28% NPS, 200+ live data points." />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C8G747MPL"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-2C8G747MPL');
-    </script>
+  <script>
+    (function (c, s, q, u, a, r, e) {
+      c.hj=c.hj||function(){(c.hj.q=c.hj.q||[]).push(arguments)};
+      c._hjSettings = { hjid: a };
+      r = s.getElementsByTagName('head')[0];
+      e = s.createElement('script');
+      e.async = true;
+      e.src = q + c._hjSettings.hjid + u;
+      r.appendChild(e);
+    })(window, document, 'https://static.hj.contentsquare.net/c/csq-', '.js', 6406799);
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C8G747MPL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2C8G747MPL');
+  </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; color: #111827; scroll-behavior: smooth; }
-        .section-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #3b82f6; margin-bottom: 1rem; display: block; }
-        .trade-off-card { transition: all 0.3s ease; border: 1px solid #e5e7eb; height: 100%; background: white; }
-        .trade-off-card:hover { border-color: #3b82f6; transform: translateY(-4px); box-shadow: 0 12px 40px -15px rgba(0,0,0,0.1); }
-        .hero-gradient { background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%); }
-        .insight-pill { background: #f0fdf4; color: #166534; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
-        .content-container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
-    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --ink-soft: #525252;
+      --hairline: #e5e7eb;
+      --bg: #ffffff;
+      --bg-soft: #fafafa;
+      --accent: #1d4ed8; /* deep blue */
+    }
+
+    html, body { background: var(--bg); color: var(--ink); }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-feature-settings: "ss01", "cv11";
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .eyebrow-accent { color: var(--accent); }
+
+    .display {
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+
+    .stat-number {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .hairline { border-color: var(--hairline); }
+
+    .card {
+      border: 1px solid var(--hairline);
+      background: #fff;
+      padding: 2rem;
+    }
+    .card-soft {
+      background: var(--bg-soft);
+      border: 1px solid var(--hairline);
+      padding: 2rem;
+    }
+
+    .placeholder {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 0.1em 0.5em;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .lede { font-size: 1.15rem; color: #404040; line-height: 1.7; }
+
+    table.metrics-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    table.metrics-table th, table.metrics-table td {
+      border-bottom: 1px solid var(--hairline);
+      padding: 1rem 1.25rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.metrics-table th {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      background: var(--bg-soft);
+      border-top: 1px solid var(--hairline);
+    }
+    table.metrics-table td { color: #404040; }
+
+    .pull-quote {
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    .result-pill {
+      display: inline-block;
+      background: #ecfdf5;
+      color: #065f46;
+      font-weight: 600;
+      padding: 0.15em 0.55em;
+      border-radius: 4px;
+      font-size: 0.85em;
+    }
+
+    .section-divider { border-top: 1px solid var(--hairline); }
+
+    .kicker-dot::before {
+      content: "";
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 9999px;
+      background: var(--accent);
+      margin-right: 0.6em;
+      vertical-align: middle;
+    }
+
+    a.cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--ink);
+      color: #fff;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: background .2s ease;
+    }
+    a.cta:hover { background: var(--accent); }
+
+    img.bordered { border: 1px solid var(--hairline); }
+  </style>
 </head>
 
-<body class="bg-white">
-    <div id="header-placeholder"></div>
+<body>
+  <div id="header-placeholder" class="sticky top-0 bg-white/30 backdrop-blur-md z-50 py-4 px-6 md:px-20 lg:px-40 border-b border-gray-200"></div>
 
-    <main>
-        <section class="hero-gradient pt-24 pb-20 border-b border-gray-100">
-            <div class="content-container">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                    <div class="lg:col-span-7 space-y-8">
-                        <div class="space-y-4">
-                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold uppercase tracking-widest">Enterprise UX / Systems Design</span>
-                            <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tighter text-gray-900">
-                                Scaling Real-Time <br><span class="text-blue-600">Coordination Systems</span>
-                            </h1>
-                            <p class="text-2xl text-gray-600 leading-relaxed max-w-2xl">
-                                Coordinating <strong>9,000+ vehicles</strong> for stadium-scale events through a synchronized 3-sided ecosystem.
-                            </p>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-8 py-8 border-y border-gray-100 max-w-2xl">
-                            <div><p class="text-3xl font-black text-gray-900">43s</p><p class="text-[10px] font-bold text-gray-400 uppercase">Intake Speed</p></div>
-                            <div><p class="text-3xl font-black text-gray-900">200+</p><p class="text-[10px] font-bold text-gray-400 uppercase">Data Points</p></div>
-                            <div><p class="text-3xl font-black text-gray-900">93%</p><p class="text-[10px] font-bold text-gray-400 uppercase">Task Success</p></div>
-                        </div>
-
-                        <div class="flex items-center gap-6">
-                            <div class="flex -space-x-3">
-                                <div class="w-10 h-10 rounded-full bg-blue-600 border-2 border-white flex items-center justify-center text-xs font-bold text-white">V</div>
-                                <div class="w-10 h-10 rounded-full bg-gray-900 border-2 border-white flex items-center justify-center text-xs font-bold text-white">A</div>
-                            </div>
-                            <p class="text-sm font-medium text-gray-500 italic">San Diego Padres Pilot: Real-time sync across 40k capacity stadium.</p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-5" data-aos="fade-left">
-                        <img src="img/pmr/PMR-2.png" alt="System Preview" class="w-full drop-shadow-2xl rounded-3xl">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="bg-white border-b border-gray-100">
-            <div class="content-container py-12">
-                <div class="mb-8">
-                    <span class="section-label">Technical Stack</span>
-                    <h3 class="text-2xl font-bold text-gray-900">The Modern Product Ecosystem</h3>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="flex items-start gap-3">
-                        <div class="p-2 bg-orange-50 rounded-lg">
-                            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Design & Specs</p>
-                            <p class="text-sm font-bold text-gray-900">Figma • Adobe CC</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="p-2 bg-blue-50 rounded-lg">
-                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Management</p>
-                            <p class="text-sm font-bold text-gray-900">Jira • Scrum • Slack</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="p-2 bg-purple-50 rounded-lg">
-                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Validation</p>
-                            <p class="text-sm font-bold text-gray-900">Maze • Atlas.ti</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <div class="p-2 bg-green-50 rounded-lg">
-                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Development</p>
-                            <p class="text-sm font-bold text-gray-900">Django • GitHub • WP</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <main>
+    <!-- ============================================================ -->
+    <!-- 1. HERO                                                       -->
+    <!-- ============================================================ -->
+    <section class="px-6 md:px-12 pt-24 pb-20">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-10" data-aos="fade-up">
+          <span class="eyebrow eyebrow-accent kicker-dot">Park My Ride</span>
+          <span class="eyebrow">Case Study</span>
         </div>
 
-        <section class="bg-white py-24">
-            <div class="content-container">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
-                    <div class="lg:col-span-1">
-                        <span class="section-label">Operational Complexity</span>
-                        <h2 class="text-3xl font-bold mb-6">Multi-User Workflows</h2>
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                            High-volume logistics require a unified source of truth. Success relied on the sub-2-second handshake between mobile field tools and live operational dashboards.
-                        </p>
-                        <div class="p-6 bg-blue-50 rounded-xl border border-blue-100">
-                            <span class="insight-pill mb-3 inline-block">Future-Proofing</span>
-                            <h4 class="font-bold text-sm mb-2 text-blue-900">Scalable Data Handling</h4>
-                            <p class="text-xs text-blue-800 leading-relaxed">Discussed architectural shifts from Django to more efficient database handling to manage <strong>increased API load</strong> as event volume scales.</p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-2">
-                        <img src="img/PMR_Mob_Prototype.png" class=" w-full" alt="System Architecture">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                        <h3 class="font-bold text-xl mb-4">Admin Dashboard</h3>
-                        <p class="text-sm text-gray-600 mb-6">The Operations Hub: Managing 26+ screens and 200+ data points for real-time inventory.</p>
-                        <img src="img/PMR_admindashboard.png" class="rounded-lg border shadow-sm" alt="Admin View">
-                    </div>
-                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                        <h3 class="font-bold text-xl mb-4">Valet App</h3>
-                        <p class="text-sm text-gray-600 mb-6">The Field Tool: High-contrast, one-handed UI optimized for 43-second intake cycles.</p>
-                        <img src="img/pmr/pmr-11.png" class="rounded-lg border shadow-sm" alt="Valet View">
-                    </div>
-                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                        <h3 class="font-bold text-xl mb-4">Customer App</h3>
-                        <p class="text-sm text-gray-600 mb-6">The Interface: Frictionless booking with automated 1-tap vehicle retrieval.</p>
-                        <img src="img/pmr/pmr-10.png" class="rounded-lg border shadow-sm" alt="Customer View">
-                    </div>
-                </div>
+        <div class="grid grid-cols-12 gap-10 mb-20">
+          <div class="col-span-12 lg:col-span-8" data-aos="fade-up">
+            <h1 class="display text-5xl md:text-7xl mb-8">
+              One real-time platform for<br/>
+              stadium level valet operations.
+            </h1>
+            <p class="lede max-w-2xl mb-8">
+              A driver/valet, customer and the admin operations into a single coordinated system, cutting ticket resolution time and rebuilding trust at stadium scale.
+            </p>
+            <div class="card-soft max-w-2xl">
+              <p class="eyebrow mb-3">TL;DR</p>
+              <p class="text-[15px] text-neutral-700 leading-relaxed">
+                Valet, Customer and admin lacked coordination causing race conditions, lost tickets, and customer parking panic. I led the design of a unified real-time valet app, a customer app, and admin dashboard sharing one platform. Piloted at a 9000 car capacity with measurable drops in panic reports and ticket resolution time.
+              </p>
             </div>
-        </section>
+          </div>
 
-        <section class="py-24 bg-gray-50">
-            <div class="content-container">
-                <span class="section-label text-center">Engineering & Strategy</span>
-                <h2 class="text-4xl font-extrabold text-center mb-16 tracking-tight">Balancing Pilot Launch vs. Long-Term Roadmap</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="trade-off-card p-8 rounded-2xl flex flex-col">
-                        <h4 class="font-bold text-lg mb-3">API Load Management</h4>
-                        <p class="text-xs text-gray-600 mb-4">Targeted database efficiency discussions to move beyond Django as query volume increases.</p>
-                        <p class="text-xs text-blue-600 font-semibold mt-auto">Focus: Backend Scalability</p>
-                    </div>
-                    <div class="trade-off-card p-8 rounded-2xl flex flex-col">
-                        <h4 class="font-bold text-lg mb-3">Vehicle Inspection</h4>
-                        <p class="text-xs text-gray-600 mb-4">Identified as a critical roadmap item for liability, though out of scope for the MVP pilot.</p>
-                        <p class="text-xs text-blue-600 font-semibold mt-auto">Focus: Future Liability Protection</p>
-                    </div>
-                    <div class="trade-off-card p-8 rounded-2xl flex flex-col">
-                        <h4 class="font-bold text-lg mb-3">Dead-Zone Sync</h4>
-                        <p class="text-xs text-gray-600 mb-4">Updates lost in concrete garages. Result: Built an 'Offline-First' cache to prevent data loss.</p>
-                        <p class="text-xs text-blue-600 font-semibold mt-auto">Focus: Data Integrity</p>
-                    </div>
-                    <div class="trade-off-card p-8 rounded-2xl flex flex-col">
-                        <h4 class="font-bold text-lg mb-3">Tactile Field Design</h4>
-                        <p class="text-xs text-gray-600 mb-4">Valets moving at speed need 64px hit-areas and haptic confirmation over precision taps.</p>
-                        <p class="text-xs text-blue-600 font-semibold mt-auto">Focus: Ergonomic Reliability</p>
-                    </div>
-                </div>
+          <div class="col-span-12 lg:col-span-4 lg:border-l hairline lg:pl-10 space-y-7" data-aos="fade-up" data-aos-delay="100">
+            <div>
+              <p class="eyebrow mb-2">Role</p>
+              <p class="text-[15px] font-semibold">UX Lead · Scrum Master</p>
             </div>
-        </section>
-
-        <section class="py-24 px-6 bg-gray-900 text-white">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="space-y-6">
-                    <span class="section-label text-blue-400">Validation Phase</span>
-                    <h2 class="text-4xl font-bold">Evidence-Based Iteration</h2>
-                    <p class="text-gray-400 text-lg leading-relaxed">
-                        Testing via <strong>Maze</strong> compared two visualization formats. 85% of users preferred the "Compact Grid" (Option A), which reduced vertical scrolling by 40% and improved reaction times for valet dispatch.
-                    </p>
-                    <img src="img/pmr-15.png" alt="A/B Test" class="rounded-xl border border-gray-700 shadow-2xl">
-                </div>
-                <div class="space-y-8">
-                    <div class="p-8 bg-gray-800 rounded-2xl border border-gray-700">
-                        <h4 class="text-blue-400 font-bold mb-2">Field Observation Discovery</h4>
-                        <p class="text-sm text-gray-300">During the pilot, we observed valets struggling with traditional "Success" modals while running. I pivoted the UI to <strong>full-screen haptic feedback states</strong> that confirm car arrival without requiring a precision tap.</p>
-                    </div>
-                    <img src="img/pmr/pmr-16.png" class="rounded-xl opacity-60 hover:opacity-100 transition-opacity" alt="Iteration">
-                </div>
+            <div>
+              <p class="eyebrow mb-2">Team</p>
+              <p class="text-[15px] font-semibold leading-relaxed">2 Designers · 2 Fullstack Eng · 2 Django Eng</p>
             </div>
-        </section>
-
-        <section class="py-24 bg-white border-t">
-            <div class="content-container">
-                <div class="max-w-4xl mx-auto space-y-12">
-                    <div class="text-center">
-                        <h2 class="text-4xl font-extrabold mb-4 tracking-tight">Strategic Takeaways</h2>
-                        <p class="text-lg text-gray-600">Leading the intersection of Design, Product, and Engineering.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div>
-                            <h4 class="font-bold text-xl mb-3 text-blue-600">The Scrum Master Role</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Managed JIRA ceremonies and sprint backlogs, ensuring design fidelity stayed in sync with Django development velocity for the stadium launch.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-xl mb-3 text-blue-600">Roadmapping Complexity</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">Success was defined by making hard calls on MVP scope—prioritizing core sync logic over inspection flows to meet the pilot deadline while future-proofing the API architecture.</p>
-                        </div>
-                    </div>
-                    <div class="text-center pt-8">
-                        <a href="index.html#work" class="inline-block px-12 py-5 bg-gray-900 text-white rounded-full font-bold hover:bg-blue-600 transition shadow-xl">Back to Case Studies</a>
-                    </div>
-                </div>
+            <div>
+              <p class="eyebrow mb-2">Timeline</p>
+              <p class="text-[15px] font-semibold">6 Months</p>
             </div>
-        </section>
-    </main>
+            <div>
+              <p class="eyebrow mb-2">Platform</p>
+              <p class="text-[15px] font-semibold leading-relaxed">Valet App · Customer App · Admin dashboard</p>
+            </div>
+            <div>
+              <p class="eyebrow mb-2">Stack</p>
+              <p class="text-[15px] font-semibold">Figma · Django · Jira · Maze · VS Code</p>
+            </div>
+          </div>
+        </div>
 
-    <footer class="py-12 bg-white text-center border-t text-gray-400 text-xs font-bold uppercase tracking-widest">
-        &copy; 2026 Andem Sai | Senior Product Designer
-    </footer>
+        <!-- Impact strip -->
 
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => { document.getElementById('header-placeholder').innerHTML = data; });
-    </script>
+        <p class="eyebrow mb-6">Impact</p>
+        <div data-aos="fade-up" class="flex flex-col items-center">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-l hairline max-w-5xl w-full">
+            
+            <div class="border-r border-b hairline p-8 flex flex-col items-center text-center">
+              <p class="stat-number">−60%</p>
+              <p class="eyebrow mt-3">Parking Panic Reports</p>
+            </div>
+        
+            <div class="border-r border-b hairline p-8 flex flex-col items-center text-center">
+              <p class="stat-number">−42%</p>
+              <p class="eyebrow mt-3">Ticket Resolution Time</p>
+            </div>
+        
+            <div class="border-r border-b hairline p-8 flex flex-col items-center text-center">
+              <p class="stat-number">200+</p>
+              <p class="eyebrow mt-3">Live Data Points</p>
+            </div>
+        
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2. PROBLEM FRAMING                                            -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Problem Framing</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">Three screens, one lot, zero coordination.</h2>
+          <p class="lede max-w-3xl">
+            Valets, dispatchers, and managers were operating the same physical lot through three different tools, none of which shared state. The result was systemic: customers panicked, parking wasted and the admin dealt with bad data.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up">
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">Context</p>
+            <h4 class="font-bold text-lg mb-3">Valet parking at scale for large venues & stadiums</h4>
+            <p class="text-sm text-neutral-600 leading-relaxed">High-volume pre & post-event traffic created major bottlenecks in vehicle retrieval, causing delays, confusion, and customer frustration during drop-off & pickup operations.</p>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">User Problem</p>
+            <h4 class="font-bold text-lg mb-3">Customers couldn't trust</h4>
+            <p class="text-sm text-neutral-600 leading-relaxed">Post-event retrieval averaged <span class="placeholder">45mins</span>. No live status meant customers panicked and called managers, who also had no status.</p>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">Business Problem</p>
+            <h4 class="font-bold text-lg mb-3">Every dispute cost more than the booking.</h4>
+            <p class="text-sm text-neutral-600 leading-relaxed">Disputes took <span class="placeholder">50% more than average time</span> to resolve because no system held a unified event timeline.</p>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">Constraints</p>
+            <h4 class="font-bold text-lg mb-3">To work within</h4>
+            <ul class="text-sm text-neutral-600 leading-relaxed space-y-2">
+              <li>Peak demand within a 30 - 45min wondow</li>
+              <li>First pilot with no established workflows</li>
+              <li>Coordinating multiple parking zones simultaneously</li>
+              <li>Deadzones in the parking lots</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 3. OBJECTIVES & SUCCESS METRICS                               -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24 bg-[var(--bg-soft)]">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Objectives &amp; Success Metrics</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">What win-win means for users and the business.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12" data-aos="fade-up">
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-4">User Goals</p>
+            <ul class="space-y-3 text-neutral-700 text-[15px] leading-relaxed">
+              <li>· Know where my car is, without asking.</li>
+              <li>· Retrieve in under 5 minutes from the request tap.</li>
+              <li>· Recover gracefully when phone dies or signal drops.</li>
+              <li>· Trust a wrong-car handoff is impossible.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-4">Business Goals</p>
+            <ul class="space-y-3 text-neutral-700 text-[15px] leading-relaxed">
+              <li>· Win the stadium pilot contract.</li>
+              <li>· Cut dispute resolution overhead by &gt;50%.</li>
+              <li>· Operate at 4× efficient with same headcount.</li>
+              <li>· Generate auditable event log per vehicle.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div data-aos="fade-up">
+          <p class="eyebrow mb-4">Success Metrics</p>
+          <div class="card !p-0 overflow-hidden">
+            <table class="metrics-table">
+              <thead>
+                <tr><th>Goal</th><th>Metric</th><th>Result</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Reduce retrieval friction</td><td>Avg retrieval time (tap → keys)</td><td><span class="result-pill">18mins(60% reduction)</span></td></tr>
+                <tr><td>Rebuild confidence</td><td>"Where's my car" reports</td><td><span class="result-pill">−60% panic reports</span></td></tr>
+                <tr><td>Admin assistance</td><td>valets &amp; drivers complaints</td></td><td><span class="result-pill">-28% (Reduced)</span></td></tr>
+                <tr><td>Operational visibility</td><td>Live data points in admin</td><td><span class="result-pill">200+ live data points</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4. RESEARCH & INSIGHTS                                        -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Research &amp; Insights</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">I optimized for what valets actually do — not what they told us.</h2>
+        </div>
+
+        <p class="eyebrow mb-6" data-aos="fade-up">Methods</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16" data-aos="fade-up">
+          <div class="card">
+            <p class="font-semibold text-[15px] mb-2">Field Shadowing</p>
+            <p class="text-sm text-neutral-600"><span class="placeholder">3 shifts</span> across 3 venues, peak &amp; off-peak.</p>
+          </div>
+          <div class="card">
+            <p class="font-semibold text-[15px] mb-2">Operator Interviews</p>
+            <p class="text-sm text-neutral-600"><span class="placeholder">5 interviews</span> with valets, drivers, admin.</p>
+          </div>
+          <div class="card">
+            <p class="font-semibold text-[15px] mb-2">User journey mapping</p>
+            <p class="text-sm text-neutral-600">Mapped the end-to-end journey from booking and vehicle drop-off to post-event retrieval.</p>
+          </div>
+          <div class="card">
+            <p class="font-semibold text-[15px] mb-2">Usability (Maze)</p>
+            <p class="text-sm text-neutral-600"><span class="placeholder">6 participants</span> across 4 unmoderated rounds.</p>
+          </div>
+        </div>
+
+        <p class="eyebrow mb-6" data-aos="fade-up">Key Insights</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12" data-aos="fade-up">
+          <div>
+            <p class="eyebrow eyebrow-accent mb-3">Insight 01</p>
+            <p class="pull-quote mb-3">"Valets optimized for certainty over speed."</p>
+            <p class="text-sm text-neutral-600 leading-relaxed">Speed came from removing confirmation anxiety, not removing taps.</p>
+          </div>
+          <div>
+            <p class="eyebrow eyebrow-accent mb-3">Insight 02</p>
+            <p class="pull-quote mb-3">"Customers calmed the moment they saw any status."</p>
+            <p class="text-sm text-neutral-600 leading-relaxed">Visible status reduced the panic irrespective of speed of retrieval</p>
+          </div>
+          <div>
+            <p class="eyebrow eyebrow-accent mb-3">Insight 03</p>
+            <p class="pull-quote mb-3">"Managers used Excel because dashboards lied."</p>
+            <p class="text-sm text-neutral-600 leading-relaxed">Legacy dashboards aggregated stale data. Managers trusted their spreadsheet because they controlled the refresh.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. DEFINING THE OPPORTUNITY                                   -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24 bg-[var(--bg-soft)]">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Design Direction</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">
+            Simplifying coordination during peak retrieval periods.
+          </h2>
+    
+          <p class="text-lg text-neutral-600 max-w-3xl leading-relaxed">
+            Research showed that most operational failures happened after events ended, when thousands of guests requested vehicles within a short time window. Staff struggled to coordinate retrievals, while customers had little visibility into wait times or vehicle status.
+          </p>
+        </div>
+    
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6" data-aos="fade-up">
+    
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">Key Problems</p>
+    
+            <ul class="text-[15px] text-neutral-700 space-y-2 leading-relaxed">
+              <li>• No centralized view of active retrieval requests.</li>
+              <li>• Manual coordination caused delays and duplicate work.</li>
+              <li>• Customers had no visibility into pickup progress.</li>
+              <li>• High post-event demand created operational bottlenecks.</li>
+            </ul>
+          </div>
+    
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">Design Priorities</p>
+    
+            <ul class="text-[15px] text-neutral-700 space-y-2 leading-relaxed">
+              <li>• Reduce confusion during vehicle retrieval.</li>
+              <li>• Improve coordination between valet teams.</li>
+              <li>• Surface real-time status updates for customers.</li>
+              <li>• Support high-volume event operations.</li>
+            </ul>
+          </div>
+    
+          <div class="card" style="background:#f8fafc">
+            <p class="eyebrow eyebrow-accent mb-3">Product Direction</p>
+    
+            <p class="text-[15px] text-neutral-700 leading-relaxed">
+              The solution focused on creating a shared operational dashboard for valet staff and a simplified status experience for customers, helping both groups stay informed during peak retrieval periods.
+            </p>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 6. EXPLORATION & ITERATION                                    -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Exploration &amp; Iteration</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">Three concepts. Two I killed.</h2>
+        </div>
+
+        <div class="space-y-0 border-t hairline">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start py-10 border-b hairline" data-aos="fade-up">
+            <div class="lg:col-span-2">
+              <p class="text-3xl font-bold text-neutral-300">A</p>
+              <p class="eyebrow mt-1">Killed</p>
+            </div>
+            <div class="lg:col-span-4">
+              <h3 class="text-xl font-bold mb-2">Chat-based dispatch.</h3>
+              <p class="text-sm text-neutral-600 leading-relaxed">A Slack-style channel where dispatchers messaged valets directly with retrieval requests.</p>
+            </div>
+            <div class="lg:col-span-6">
+              <p class="eyebrow mb-2">Why It Failed</p>
+              <p class="text-[15px] text-neutral-700 leading-relaxed">Valets ran with phones, couldn't read or type. Speech-to-text failed in 90+ dB noise. Worse: preserved the "two screens, one truth" problem instead of solving it.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start py-10 border-b hairline" data-aos="fade-up">
+            <div class="lg:col-span-2">
+              <p class="text-3xl font-bold text-neutral-300">B</p>
+              <p class="eyebrow mt-1">Killed</p>
+            </div>
+            <div class="lg:col-span-4">
+              <h3 class="text-xl font-bold mb-2">Customer self-locate map.</h3>
+              <p class="text-sm text-neutral-600 leading-relaxed">A live map showing exactly where the customer's car was parked, with walking directions.</p>
+            </div>
+            <div class="lg:col-span-6">
+              <p class="eyebrow mb-2">Why It Failed</p>
+              <p class="text-[15px] text-neutral-700 leading-relaxed">Solved the wrong problem. Customers didn't want to walk to their car, they wanted it brought to them. Beautiful, but engineered around an unvalidated assumption. Killed at concept review.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start py-10 border-b hairline" style="background:#f8fafc" data-aos="fade-up">
+            <div class="lg:col-span-2">
+              <p class="text-3xl font-bold" style="color:var(--accent)">C</p>
+              <p class="eyebrow eyebrow-accent mt-1">Shipped</p>
+            </div>
+            <div class="lg:col-span-4">
+              <h3 class="text-xl font-bold mb-2">Shared event log + role surfaces.</h3>
+              <p class="text-sm text-neutral-600 leading-relaxed">One backend event stream. Three UIs (customer / valet / admin) each projecting the same truth differently.</p>
+            </div>
+            <div class="lg:col-span-6">
+              <p class="eyebrow eyebrow-accent mb-2">Why It Won</p>
+              <p class="text-[15px] text-neutral-700 leading-relaxed">Solved coordination at the data layer, not the UI layer. Every other problem reduced to "is the log right?" a question answerable with logs and tests. Scalable to future roles without redesign.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 7. FINAL SOLUTION                                             -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24 bg-[var(--bg-soft)]">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Final Solution</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">Three surfaces. One log. Sub-2-second sync.</h2>
+          <p class="lede max-w-3xl">
+            Each role gets a tool shaped to its environment — but every action writes to the same event log. The admin sees the same truth the valet just created, in the same second.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16" data-aos="fade-up">
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-4">Admin Dashboard</p>
+            <img src="img/PMR_admindashboard.png" alt="Admin View" class="bordered mb-5 w-full">
+            <p class="font-semibold text-sm mb-1">What</p>
+            <p class="text-sm text-neutral-600 mb-3">Managers needed audit-grade visibility across 26 screens and 200+ data points without losing the at-a-glance read for surge mode.</p>
+            <p class="font-semibold text-sm mb-1">Behavior Change</p>
+            <p class="text-sm text-neutral-600">Managers stopped maintaining shadow spreadsheets. The dashboard became source of truth.</p>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-4">Valet App</p>
+            <img src="img/pmr/pmr-11.png" alt="Valet View" class="bordered mb-5 w-full">
+            <p class="font-semibold text-sm mb-1">What</p>
+            <p class="text-sm text-neutral-600 mb-3">High-contrast UI with 64px hit targets and haptic confirmation. Designed for running, gloved hands, dead zones.</p>
+            <p class="font-semibold text-sm mb-1">Behavior Change</p>
+            <p class="text-sm text-neutral-600">Intake cycles dropped to <span class="result-pill">43 seconds</span>; valets stopped re-confirming plates because confirmation became haptic.</p>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-4">Customer App</p>
+            <img src="img/pmr/pmr-10.png" alt="Customer View" class="bordered mb-5 w-full">
+            <p class="font-semibold text-sm mb-1">What</p>
+            <p class="text-sm text-neutral-600 mb-3">Status visible by default, even when nothing was happening, the customer saw what was happening. Silence was the bug.</p>
+            <p class="font-semibold text-sm mb-1">Behavior Change</p>
+            <p class="text-sm text-neutral-600">Retrieval became a one-tap action; panic calls dropped <span class="result-pill">60%</span>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Edge cases -->
+    <section class="section-divider px-6 md:px-12 py-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Edge Cases Shipped</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">Beyond the bare minimum</h2>
+          <p class="lede max-w-3xl">A pilot at a 65,000-seat stadium produces failure modes a workshop never will. Each of these shipped before the pilot and was observed in the wild.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up">
+          <div class="card"><h4 class="font-bold mb-3">The double-park.</h4><p class="text-sm text-neutral-600 leading-relaxed mb-4">Two valets accept the same retrieval inside 400ms. Event log resolves via monotonic timestamps; second valet sees "reassigned" immediately.</p><p class="eyebrow mt-auto">Race Condition</p></div>
+          <div class="card"><h4 class="font-bold mb-3">Phone dies mid-shift.</h4><p class="text-sm text-neutral-600 leading-relaxed mb-4">Ticket lives on server, retrievable by plate. Manager-side recovery in 8 seconds. Built because it happened week one.</p><p class="eyebrow mt-auto">Device Loss</p></div>
+          <div class="card"><h4 class="font-bold mb-3">Wrong car retrieved.</h4><p class="text-sm text-neutral-600 leading-relaxed mb-4">Plate mismatch triggers a hard-stop full-screen confirmation; logged critical and surfaced to admin in 2 seconds.</p><p class="eyebrow mt-auto">Liability Guard</p></div>
+          <div class="card"><h4 class="font-bold mb-3">WiFi collapse.</h4><p class="text-sm text-neutral-600 leading-relaxed mb-4">Cached QRs valid offline 4 hours. Retrieval requests queue locally and fire on reconnect.</p><p class="eyebrow mt-auto">Network Failure</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 8. SYSTEMS THINKING                                           -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24 bg-[var(--bg-soft)]">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Systems Thinking</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">Built so the next role can plug in without a redesign.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16" data-aos="fade-up">
+          <div class="lg:col-span-4">
+            <p class="eyebrow mb-4">Multi-User Workflows</p>
+            <p class="text-neutral-700 mb-8 leading-relaxed">Three roles, one source of truth. Success relied on the sub-2-second handshake between mobile field tools and live operational dashboards.</p>
+            <div class="card">
+              <p class="eyebrow eyebrow-accent mb-2">Scalable Data Handling</p>
+              <p class="text-sm text-neutral-600">Discussed architectural shifts from Django to more efficient database handling to manage increased API load as event volume scales.</p>
+            </div>
+          </div>
+          <div class="lg:col-span-8">
+            <img src="img/PMR_Mob_Prototype.png" class="w-full bordered" alt="System Architecture">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
+          <div class="card"><p class="font-semibold mb-3">Design System: Figma Tokens</p><p class="text-sm text-neutral-600 leading-relaxed">Spacing, color, semantic warning states exported to JSON. Touch-target changes propagated to engineering specs without translation loss.</p></div>
+          <div class="card"><p class="font-semibold mb-3">Component Logic</p><p class="text-sm text-neutral-600 leading-relaxed">Built reusable "status surface" and "destructive-confirm" patterns. Adopted across all three surfaces, one component, three contexts.</p></div>
+          <div class="card"><p class="font-semibold mb-3">Future Extensibility</p><p class="text-sm text-neutral-600 leading-relaxed">Patterns generalize to concerts, sports, multi-event lots, and future roles (insurance auditor, venue ops) no new schema required.</p></div>
+          <div class="card"><p class="font-semibold mb-3">Accessibility (WCAG 2.1 AA)</p><p class="text-sm text-neutral-600 leading-relaxed">Field layouts pass AA contrast; 64px high-visibility interactive surfaces for quick, error-free taps on dark stadium lots.</p></div>
+          <div class="card"><p class="font-semibold mb-3">State Management</p><p class="text-sm text-neutral-600 leading-relaxed">Optimistic UI on the valet app with server-resolved reconciliation. Conflicts surface as state changes, never silent overwrites.</p></div>
+          <div class="card"><p class="font-semibold mb-3">Cross-Platform Consistency</p><p class="text-sm text-neutral-600 leading-relaxed">Same token system, same semantic states across iOS field tools and web admin. One mental model across roles.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 9. COLLABORATION & TRADEOFFS                                  -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Collaboration &amp; Tradeoffs</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">The hard calls — and what we gave up.</h2>
+          <p class="lede max-w-3xl">I led both UX and Scrum ceremonies. Trade-offs surfaced in standup, not retros — and got resolved against the pilot deadline.</p>
+        </div>
+
+        <div class="card !p-0 overflow-hidden mb-12" data-aos="fade-up">
+          <table class="metrics-table">
+            <thead><tr><th>Constraint</th><th>Decision</th><th>What We Gave Up</th><th>Outcome</th></tr></thead>
+            <tbody>
+              <tr><td>Django realtime limits</td><td>Polling + targeted websocket on critical events</td><td>Full live-sync on non-critical UI</td><td>Sub-2s sync where it mattered; shipped on time</td></tr>
+              <tr><td>6-month pilot deadline</td><td>Cut vehicle inspection module from MVP</td><td>Liability surface area</td><td>Documented as P0 post-pilot; manual bridge in place</td></tr>
+              <tr><td>Ops wanted speed, finance wanted audit</td><td>Event log satisfies both: speed at UI, audit at data</td><td>Some duplicated logging effort</td><td>Both stakeholders signed off on pilot scope</td></tr>
+              <tr><td>Two designers, six engineers</td><td>Ran Scrum to keep design ahead of dev by one sprint</td><td>Some exploratory design time</td><td>Zero spec-blocked sprints across the project</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">UX + Scrum Master</p>
+            <p class="text-sm text-neutral-700 leading-relaxed">Holding both roles compressed the spec-to-ticket loop. JIRA ceremonies stayed in sync with Django velocity because the person grooming the backlog was the same person designing the screens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 10. OUTCOMES & IMPACT                                         -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24 bg-[var(--bg-soft)]">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Outcomes &amp; Impact</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">Pilot results, and what they unlocked.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div data-aos="fade-up">
+            <p class="eyebrow mb-4">Quantitative</p>
+            <div class="space-y-4 mb-10">
+              <div class="card"><p class="stat-number mb-1" style="font-size:2.25rem">−60%</p><p class="text-sm text-neutral-600">Parking panic reports during peak events.</p></div>
+              <div class="card"><p class="stat-number mb-1" style="font-size:2.25rem">−42%</p><p class="text-sm text-neutral-600">Ticket resolution time (dispute → resolved).</p></div>
+              <div class="card"><p class="stat-number mb-1" style="font-size:2.25rem">200+</p><p class="text-sm text-neutral-600">Live data points surfaced in the admin dashboard.</p></div>
+            </div>
+          </div>
+
+          <div data-aos="fade-up">
+            <p class="eyebrow mb-4">Qualitative</p>
+            <div class="space-y-6 mb-10">
+              <blockquote class="card">
+                <p class="pull-quote mb-3">"<span class="placeholder">[QUOTE: stakeholder quote — e.g. ops director on dispute time]</span>"</p>
+                <p class="eyebrow">— Role, Stakeholder</p>
+              </blockquote>
+              <blockquote class="card">
+                <p class="pull-quote mb-3">"<span class="placeholder">[QUOTE: valet quote on field-tool change]</span>"</p>
+                <p class="eyebrow">— Valet, Pilot venue</p>
+              </blockquote>
+              <blockquote class="card">
+                <p class="pull-quote mb-3">"<span class="placeholder">[QUOTE: customer feedback on retrieval experience]</span>"</p>
+                <p class="eyebrow">— Customer, post-pilot survey</p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 11. REFLECTION                                                -->
+    <!-- ============================================================ -->
+    <section class="section-divider px-6 md:px-12 py-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="mb-14" data-aos="fade-up">
+          <p class="eyebrow eyebrow-accent kicker-dot mb-4">Reflection</p>
+          <h2 class="display text-4xl md:text-5xl mb-6">What I'd do differently.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16" data-aos="fade-up">
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">What Worked</p>
+            <ul class="text-[15px] text-neutral-700 space-y-2 leading-relaxed">
+              <li>· Solving coordination at the data layer, not the UI layer.</li>
+              <li>· Research and data backed decisions helped focus on the core friction points.</li>
+              <li>· Maze testing for mobile apps and A/B testing for admin dashboard validated the designs early in development stage.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">What Didn't</p>
+            <ul class="text-[15px] text-neutral-700 space-y-2 leading-relaxed">
+              <li>· Spent too long on chat-dispatch before field-testing it in noise.</li>
+              <li>· API bottleneck due to high referesh rate & realtime updates to multiple users.</li>
+              <li>· Network dead zones in deep parking areas was not considered initially.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">What I'd Improve</p>
+            <ul class="text-[15px] text-neutral-700 space-y-2 leading-relaxed">
+              <li>· Validate concepts in environment (noise, weather, dead zones) before usability lab.</li>
+              <li>· Build dashboard refresh-rate guarantee into the design spec, not the eng spec.</li>
+              <li>· Ship a smaller "trust loop" version first, even before unified log was ready.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="eyebrow eyebrow-accent mb-3">Future Opportunities</p>
+            <ul class="text-[15px] text-neutral-700 space-y-2 leading-relaxed">
+              <li>· Vehicle inspection module (deferred from MVP).</li>
+              <li>· Multi-venue zone-handoff for citywide event nights.</li>
+              <li>· Insurance auditor role plugged into existing event log.</li>
+              <li>· Predictive surge-mode triggered by ticketing API, not load.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="index.html" class="cta">
+            <span>Back to Case Studies</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section-divider py-12 text-center">
+    <p class="eyebrow">© 2026 Andem Sai | Senior Product Designer</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 60 });
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        var el = document.getElementById('header-placeholder');
+        if (el) el.innerHTML = data;
+      })
+      .catch(() => {});
+  </script>
 </body>
 </html>
